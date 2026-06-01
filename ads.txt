@@ -1,0 +1,5 @@
+HEIST currently does not run third-party ads.
+
+This file is placed here to satisfy the ads.txt security audit.
+
+placeholder.com, 12345, DIRECT, f08c47fec0942fa0

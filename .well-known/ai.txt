@@ -1,0 +1,12 @@
+AI.txt - Permissions for AI crawlers
+
+Learn more at https://aitxt.org/
+
+User-agent: *
+Allow: /
+
+If you ever want to block AI from scraping specific premium paths (like the thesis report),
+
+you can define it here in the future:
+
+Disallow: /private/

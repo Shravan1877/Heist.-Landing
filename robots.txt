@@ -1,0 +1,6 @@
+robots.txt for https://heistfashion.tech/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://heistfashion.tech/sitemap.xml

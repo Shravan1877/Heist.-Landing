@@ -4,23 +4,80 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>HEIST — AI Style Intelligence | Find Your Style DNA</title>
-  <meta name="description" content="HEIST decodes your Style DNA using AI vision. Get precise outfit formulas, brand matches, and a personal AI stylist built for those who refuse to dress mid." />
-  <link rel="canonical" href="https://heist.style/" />
-  <meta property="og:title" content="HEIST — AI Style Intelligence" />
+  <title>HEIST — AI Style Intelligence for Indian Men | Find Your Style DNA</title>
+  <meta name="description" content="HEIST decodes your Style DNA using AI vision. Get precise outfit formulas, brand matches, and a personal AI stylist built for Indian men who refuse to dress mid." />
+  <link rel="canonical" href="https://heistfashion.tech/" />
+  <meta property="og:title" content="HEIST — AI Style Intelligence for Indian Men" />
   <meta property="og:description" content="Stop dressing mid. HEIST uses AI to decode your exact style DNA and maps it to outfits that actually work." />
-  <meta property="og:url" content="https://heist.style/" />
+  <meta property="og:url" content="https://heistfashion.tech/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="HEIST" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#1e2221" />
 
+  <!-- SECURITY & PWA FIXES -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https: fonts.googleapis.com; font-src 'self' https: fonts.gstatic.com data:; img-src 'self' https: data:; connect-src 'self' https:;">
+  <link rel="manifest" href="/site.webmanifest" />
+
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"HEIST","url":"https://heist.style","description":"AI-powered fashion intelligence platform for men and women","knowsAbout":["Fashion","AI Styling","Menswear","Womenswear","Personal Styling"]}
-  </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"HEIST Style Intelligence","applicationCategory":"LifestyleApplication","operatingSystem":"Web","url":"https://heist.style"}
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://heistfashion.tech/#organization",
+        "name": "HEIST",
+        "url": "https://heistfashion.tech",
+        "description": "AI-powered fashion intelligence platform.",
+        "sameAs": [
+          "https://instagram.com/heist.style",
+          "https://youtube.com/@heist",
+          "https://www.wikidata.org/wiki/Q123456789"
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://heistfashion.tech/#software",
+        "name": "HEIST Style Intelligence",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "Web",
+        "url": "https://heistfashion.tech",
+        "author": {
+          "@id": "https://heistfashion.tech/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "priceCurrency": "USD",
+          "price": "49.00",
+          "availability": "https://schema.org/InStock",
+          "url": "https://report.heistfashion.tech"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://heistfashion.tech/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does HEIST decode my style DNA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "HEIST uses advanced AI vision to analyze your body geometry, skin undertone, and lifestyle to create a precise aesthetic profile."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is HEIST only for men?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, HEIST is built for everyone confident enough to dress well and refuse mediocrity, including both men and women."
+            }
+          }
+        ]
+      }
+    ]
+  }
   </script>
 
   <!-- Cormorant Garamond: editorial sharp serif. Suisse/Aktiv alternative: DM Sans at narrow tracking -->
@@ -67,56 +124,6 @@
       --max-w: 1440px;
       --gutter: max(2rem, 5vw);
     }
-
-    /* ─────────────────────────────────────────
-       AMBIENT BACKGROUND SHAPES
-    ───────────────────────────────────────── */
-    .bg-elements {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-    
-    .ambient-shape {
-      position: absolute;
-      color: var(--off-white);
-      opacity: 0.03; /* Kept very subtle so it doesn't distract */
-    }
-    
-    .shape-radar {
-      top: 10%;
-      right: -10%;
-      width: 800px;
-      max-width: 150vw;
-      height: auto;
-      animation: spin 60s linear infinite;
-    }
-    
-    .shape-diamond {
-      bottom: -20%;
-      left: -10%;
-      width: 700px;
-      max-width: 120vw;
-      height: auto;
-      animation: spin-reverse 80s linear infinite;
-    }
-
-    .cross-mark {
-      width: 20px;
-      height: 20px;
-      color: var(--teal-txt);
-      opacity: 0.2;
-    }
-    
-    .cross-1 { top: 25%; left: 8%; animation: pulse 4s ease-in-out infinite; }
-    .cross-2 { bottom: 15%; right: 12%; animation: pulse 4s ease-in-out infinite 2s; }
-    .cross-3 { top: 15%; right: 8%; animation: pulse 4s ease-in-out infinite 1s; }
-    
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-    @keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
-    @keyframes pulse { 0%, 100% { opacity: 0.1; transform: scale(0.9); } 50% { opacity: 0.4; transform: scale(1.1); } }
 
     /* ─────────────────────────────────────────
        RESET & BASE
@@ -342,20 +349,6 @@
       grid-template-rows: 1fr auto;
       padding-top: 56px; /* nav height */
       border-bottom: 1px solid var(--rule);
-      position: relative; /* Added for shapes */
-      overflow: hidden;   /* Added for shapes */
-    }
-    .hero-body {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: end;
-      padding: var(--s-xl) var(--gutter) var(--s-lg);
-      max-width: var(--max-w);
-      margin: 0 auto;
-      width: 100%;
-      gap: var(--s-lg);
-      position: relative; /* Keeps text above shapes */
-      z-index: 2;
     }
     .hero-body {
       display: grid;
@@ -501,8 +494,6 @@
       justify-content: space-between;
       gap: var(--s-md);
       flex-wrap: wrap;
-      position: relative; /* Keeps text above shapes */
-      z-index: 2;
     }
     .hero-bottom-tags {
       display: flex;
@@ -704,18 +695,6 @@
       background: var(--bg-deep);
       border-bottom: 1px solid var(--rule);
       padding: var(--s-2xl) var(--gutter);
-      position: relative; /* Added for shapes */
-      overflow: hidden;   /* Added for shapes */
-    }
-    .manifesto-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: var(--s-xl);
-      align-items: center;
-      position: relative; /* Keeps text above shapes */
-      z-index: 2;
     }
     .manifesto-inner {
       max-width: var(--max-w);
@@ -815,19 +794,6 @@
     .cta-band {
       background: var(--teal);
       border-bottom: 1px solid var(--rule);
-      position: relative; /* Added for shapes */
-      overflow: hidden;   /* Added for shapes */
-    }
-    .cta-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: var(--s-xl) var(--gutter);
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: end;
-      gap: var(--s-lg);
-      position: relative; /* Keeps text above shapes */
-      z-index: 2;
     }
     .cta-inner {
       max-width: var(--max-w);
@@ -987,7 +953,7 @@
       <li><a href="https://tokyo.heistfashion.tech" class="nav-link">Tokyo</a></li>
       <li><a href="https://report.heistfashion.tech" class="nav-link">Fashion Thesis</a></li>
     </ul>
-    <a href="https://discover.heistfashion.tech" class="nav-cta">Discover Heist.</a>
+    <a href="#products" class="nav-cta" onclick="document.querySelector('.prod-section').scrollIntoView({behavior: 'smooth'})">Discover Heist</a>
   </div>
 </nav>
 
@@ -995,23 +961,6 @@
      HERO
 ══════════════════════════════════ -->
 <section class="hero" aria-label="Hero">
-  <!-- Decorative Background Elements -->
-  <div class="bg-elements" aria-hidden="true">
-    <svg class="ambient-shape shape-radar" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.15">
-      <circle cx="50" cy="50" r="48" stroke-dasharray="2 4" />
-      <circle cx="50" cy="50" r="32" />
-      <circle cx="50" cy="50" r="16" stroke-dasharray="1 2" />
-      <line x1="50" y1="2" x2="50" y2="98" stroke-opacity="0.5"/>
-      <line x1="2" y1="50" x2="98" y2="50" stroke-opacity="0.5"/>
-    </svg>
-    <svg class="ambient-shape cross-mark cross-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <line x1="12" y1="2" x2="12" y2="22" /><line x1="2" y1="12" x2="22" y2="12" />
-    </svg>
-    <svg class="ambient-shape cross-mark cross-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <line x1="12" y1="2" x2="12" y2="22" /><line x1="2" y1="12" x2="22" y2="12" />
-    </svg>
-  </div>
-
   <div class="hero-body">
 
     <div class="hero-left">
@@ -1033,10 +982,10 @@
       </div>
 
       <div class="hero-cta-row hero-enter he-6">
-        <a href="#prod-heading" class="btn-solid">
+        <button onclick="document.querySelector('.prod-section').scrollIntoView({behavior: 'smooth'})" class="btn-solid" style="cursor: pointer;">
           Begin
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        </button>
         <a href="https://tokyo.heistfashion.tech" class="btn-text">
           Explore Tokyo
         </a>
@@ -1064,7 +1013,7 @@
       <span class="label" style="color: var(--rule-light);">—</span>
       <span class="label">Outfit Formulas</span>
       <span class="label" style="color: var(--rule-light);">—</span>
-      <span class="label">Global Discovery</span>
+      <span class="label">Global Menswear & Womenswear</span>
     </div>
     <span class="label">2026</span>
   </div>
@@ -1073,7 +1022,7 @@
 <!-- ══════════════════════════════════
      PRODUCTS
 ══════════════════════════════════ -->
-<section class="prod-section" aria-labelledby="prod-heading">
+<section class="prod-section" aria-labelledby="prod-heading" id="products">
 
   <!-- Section header -->
   <div class="sec-header">
@@ -1091,11 +1040,11 @@
   <!-- Cards grid -->
   <div class="prod-grid" role="list">
 
-    <!-- Card 01: Style Diagnostic — featured -->
+    <!-- Card 01: Heist Discovery — featured -->
     <a href="https://discover.heistfashion.tech"
        class="pcard feat sr"
        role="listitem"
-       aria-label="Heist Discovery — A global vibe-based fashion discovery platform">
+       aria-label="Heist Discovery — A vibe-based fashion items discovery platform">
       <div class="pcard-bg-num" aria-hidden="true">01</div>
 
       <div class="pcard-index">
@@ -1106,14 +1055,14 @@
       </div>
 
       <div>
-        <div class="pcard-tag">Vision Engine</div>
+        <div class="pcard-tag">Discovery Engine</div>
         <h3 class="pcard-name">Heist<br><em>Discovery</em></h3>
         <p class="pcard-desc">
-          A global vibe-based fashion discovery platform. If you're from India, uncover the best homegrown and underground brands boasting unmatched quality. Curated exactly to your aesthetic.
+          A vibe-based fashion item discovery platform. Whether you are looking for international Grails or want to discover high-quality, homegrown underground brands in India, we give you a curated list of items based on your aesthetic.
         </p>
 
         <a class="pcard-link" href="https://discover.heistfashion.tech" tabindex="-1" aria-hidden="true">
-          Start Discovery
+          Start Discovering
           <span class="pcard-link-arrow">→</span>
         </a>
       </div>
@@ -1139,7 +1088,7 @@
         <div class="pcard-tag">AI Stylist</div>
         <h3 class="pcard-name"><em>Tokyo</em></h3>
         <p class="pcard-desc">
-          Your personal style wingman. Sharp, no-BS outfit advice tuned to your exact DNA — budget, occasion, and your local market.
+          Your personal style wingman. Sharp, no-BS outfit advice tuned to your exact DNA — budget, occasion, and the market.
         </p>
         <a class="pcard-link" href="https://tokyo.heistfashion.tech" tabindex="-1" aria-hidden="true">
           Talk to Tokyo
@@ -1147,11 +1096,11 @@
         </a>
       </a>
 
-      <!-- Card 03: Dossier -->
+      <!-- Card 03: Fashion Thesis -->
       <a href="https://report.heistfashion.tech"
          class="pcard no-right sr sd-2"
          role="listitem"
-         aria-label="The Fashion Thesis — Your stylist-grade style intelligence report">
+         aria-label="The Fashion Thesis — Your complete stylist-grade style intelligence report">
         <div class="pcard-bg-num" aria-hidden="true">03</div>
 
         <div class="pcard-index">
@@ -1164,10 +1113,10 @@
         <div class="pcard-tag">Deep Intel</div>
         <h3 class="pcard-name">The Fashion<br><em>Thesis</em></h3>
         <p class="pcard-desc">
-          A stylist-grade report engineered by state-of-the-art AI and verified by professional human stylists. Get a comprehensive PDF onboarding guide to your personal style at a fraction of the cost—feed this thesis directly to Tokyo for ultimate personalization.
+          A stylist-grade report created by state-of-the-art AI agents and approved by professional human stylists. Get exactly what a stylist would give to onboard a client at a fraction of the price, and feed this report to Tokyo for maximum personalization.
         </p>
         <a class="pcard-link" href="https://report.heistfashion.tech" tabindex="-1" aria-hidden="true">
-          Get Your Thesis
+          Get Your Report
           <span class="pcard-link-arrow">→</span>
         </a>
       </a>
@@ -1180,37 +1129,23 @@
      MANIFESTO
 ══════════════════════════════════ -->
 <section class="manifesto" aria-label="Brand manifesto">
-  <!-- Decorative Background Elements -->
-  <div class="bg-elements" aria-hidden="true">
-    <svg class="ambient-shape shape-diamond" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.15">
-      <rect x="25" y="25" width="50" height="50" transform="rotate(45 50 50)" />
-      <rect x="35" y="35" width="30" height="30" transform="rotate(45 50 50)" />
-      <circle cx="50" cy="50" r="35" stroke-dasharray="1 3"/>
-    </svg>
-    <svg class="ambient-shape cross-mark cross-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-      <line x1="12" y1="2" x2="12" y2="22" /><line x1="2" y1="12" x2="22" y2="12" />
-    </svg>
-  </div>
-
   <div class="manifesto-inner">
     <div class="manifesto-label-col sr">
       <span class="label-teal">Manifesto</span>
       <div class="manifesto-rule"></div>
-      <p class="body-txt">On curation.<br>On refusing mediocrity.<br>On never looking chopped.</p>
+      <p class="body-txt">On identity.<br>On precision.<br>On refusing to settle.</p>
     </div>
     <div>
       <h2 class="manifesto-headline sr sd-1">
-        Fashion isn't<br>
-        copied.<br>
-        It's<br>
-        <em>curated.</em>
+        Fashion isn't copied.<br>
+        It's <em>curated.</em>
       </h2>
       <div class="manifesto-body sr sd-2">
         <p class="body-txt">
-          HEIST is not a store. Not a trend feed. It's an intelligence layer — built for men and women who refuse mediocrity and are tired of looking chopped.
+          Most men and women dress by accident. They buy what the algorithm surfaces, what the influencer wore, what was on sale. The result? Looking chopped.
         </p>
         <p class="body-txt">
-          Most people dress by accident. They buy what the algorithm surfaces, what the influencer wore, what was on sale. HEIST is the correction. Know your geometry. Own your palette. Build with intention.
+          HEIST is the correction. We give you an intelligence layer to build your wardrobe intentionally. Know your geometry. Own your palette. Refuse mediocrity.
         </p>
       </div>
     </div>
@@ -1239,7 +1174,7 @@
     <div class="process-item sr" role="listitem">
       <div class="proc-num">01</div>
       <div>
-        <h3 class="proc-title">Run Heist Discovery</h3>
+        <h3 class="proc-title">Run Your Diagnostic</h3>
       </div>
       <div class="process-item-desc">
         <p class="proc-desc">Upload a photo or complete 10 precision questions. The AI maps body type, undertone, silhouette preferences, and lifestyle in under two minutes.</p>
@@ -1262,7 +1197,7 @@
         <h3 class="proc-title">Build Your Arsenal</h3>
       </div>
       <div class="process-item-desc">
-        <p class="proc-desc">Use Tokyo for real-time advice, or commission a full Fashion Thesis — a comprehensive style report built around your exact DNA, delivered as a clean, downloadable PDF.</p>
+        <p class="proc-desc">Use Tokyo for real-time advice, or commission a full Fashion Thesis — built around your exact DNA, delivered as a clean, downloadable report.</p>
       </div>
     </div>
 
@@ -1283,8 +1218,8 @@
       <p class="cta-sub">Stop guessing. Start building a wardrobe that makes sense for your exact face, body, and life.</p>
     </div>
     <div class="cta-action sr sd-2">
-      <a href="https://discover.heistfashion.tech" class="btn-inverse">Start Discovery</a>
-      <a href="https://report.heistfashion.tech" class="btn-text-inv">View Fashion Thesis</a>
+      <a href="https://discover.heistfashion.tech" class="btn-inverse">Start Discovering</a>
+      <a href="https://report.heistfashion.tech" class="btn-text-inv">View Thesis Plans</a>
     </div>
   </div>
 </section>
@@ -1301,9 +1236,9 @@
     </div>
     <div>
       <div class="foot-col-h">Tools</div>
-      <a href="https://discover.heistfashion.tech" class="foot-link">Heist Discovery</a>
+      <a href="https://discover.heistfashion.tech" class="foot-link">Discovery Engine</a>
       <a href="https://tokyo.heistfashion.tech" class="foot-link">Tokyo — AI Stylist</a>
-      <a href="https://report.heistfashion.tech" class="foot-link">Fashion Thesis</a>
+      <a href="https://report.heistfashion.tech" class="foot-link">The Fashion Thesis</a>
     </div>
     <div>
       <div class="foot-col-h">Company</div>
@@ -1327,6 +1262,16 @@
   </div>
 </footer>
 
+<!-- ══════════════════════════════════
+     COOKIE CONSENT UI
+══════════════════════════════════ -->
+<div id="cookie-consent" style="position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-deep); border-top: 1px solid var(--rule); padding: 1.2rem var(--gutter); display: flex; justify-content: space-between; align-items: center; z-index: 999; transform: translateY(100%); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
+  <p class="body-txt" style="margin: 0; font-size: 0.85rem; max-width: 600px;">
+    We use cookies to refine your intelligence layer and improve site performance. By continuing, you agree to our <a href="/privacy" style="text-decoration: underline; color: var(--off-white);">Privacy Policy</a>.
+  </p>
+  <button id="accept-cookies" class="btn-solid" style="padding: 0.6rem 1.5rem; font-size: 0.7rem;">Accept</button>
+</div>
+
 <script>
   // ── Scroll reveal
   const els = document.querySelectorAll('.sr, .sr-fade');
@@ -1336,6 +1281,25 @@
     });
   }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
   els.forEach(el => io.observe(el));
+
+  // ── Cookie Consent Logic
+  const cookieBanner = document.getElementById('cookie-consent');
+  if (!localStorage.getItem('heist_cookies_accepted')) {
+    setTimeout(() => { cookieBanner.style.transform = 'translateY(0)'; }, 1500);
+  }
+  document.getElementById('accept-cookies').addEventListener('click', () => {
+    localStorage.setItem('heist_cookies_accepted', 'true');
+    cookieBanner.style.transform = 'translateY(100%)';
+  });
+
+  // ── Service Worker Registration
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(err => {
+        console.warn('Service Worker registration failed: ', err);
+      });
+    });
+  }
 </script>
 
 </body>

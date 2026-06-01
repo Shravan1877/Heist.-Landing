@@ -1,0 +1,15 @@
+
+
+HEIST is an AI-powered fashion intelligence platform built for men and women who are confident enough to dress well and refuse mediocrity. It decodes exact style DNA (body geometry, skin undertone, lifestyle) and maps it to items and outfits that work.
+
+Core Products
+
+Heist Discovery (discover.heistfashion.tech): A vibe-based fashion item discovery platform to find homegrown and international brands.
+
+Tokyo (tokyo.heistfashion.tech): A personal AI style wingman providing sharp, real-time outfit advice.
+
+The Fashion Thesis (report.heistfashion.tech): A stylist-grade report created by state-of-the-art AI agents and approved by professional human stylists.
+
+Mission
+
+Fashion isn't copied, it's curated. We give users an intelligence layer to build their wardrobe intentionally and avoid looking chopped.
