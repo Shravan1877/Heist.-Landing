@@ -868,7 +868,7 @@
       margin: 0 auto;
       padding: var(--s-xl) var(--gutter) var(--s-lg);
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      grid-template-columns: 1.5fr 1fr 1fr;
       gap: var(--s-xl);
       border-bottom: 1px solid var(--rule);
     }
@@ -938,6 +938,41 @@
       letter-spacing: 0.14em;
       color: var(--dust);
     }
+
+    /* ─────────────────────────────────────────
+       CUSTOM MODAL
+    ───────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(26, 28, 27, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; 
+      transition: opacity 0.4s ease;
+    }
+    .modal-overlay.active { opacity: 1; pointer-events: auto; }
+    
+    .modal-box {
+      background: var(--bg-deep);
+      border: 1px solid var(--rule);
+      padding: var(--s-md) var(--gutter);
+      max-width: 420px; width: 90%;
+      text-align: center;
+      transform: translateY(20px); 
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-overlay.active .modal-box { transform: translateY(0); }
+    
+    .modal-title { 
+      font-family: var(--f-serif); 
+      font-size: 2rem; 
+      color: var(--off-white); 
+      margin-bottom: 1rem; 
+      letter-spacing: 0.02em;
+    }
+    .modal-close { margin-top: 1.5rem; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -951,7 +986,7 @@
     <ul class="nav-links">
       <li><a href="https://discover.heistfashion.tech" class="nav-link">Discovery</a></li>
       <li><a href="https://tokyo.heistfashion.tech" class="nav-link">Tokyo</a></li>
-      <li><a href="https://report.heistfashion.tech" class="nav-link">Fashion Thesis</a></li>
+      <li><a href="#" onclick="showModal(event, 'The Fashion Thesis is launching soon. Stay tuned.')" class="nav-link">Fashion Thesis</a></li>
     </ul>
     <a href="#products" class="nav-cta" onclick="document.querySelector('.prod-section').scrollIntoView({behavior: 'smooth'})">Discover Heist</a>
   </div>
@@ -1097,7 +1132,7 @@
       </a>
 
       <!-- Card 03: Fashion Thesis -->
-      <a href="https://report.heistfashion.tech"
+      <a href="#" onclick="showModal(event, 'The Fashion Thesis is currently under development. Check back soon for the official launch.')"
          class="pcard no-right sr sd-2"
          role="listitem"
          aria-label="The Fashion Thesis — Your complete stylist-grade style intelligence report">
@@ -1115,10 +1150,10 @@
         <p class="pcard-desc">
           A stylist-grade report created by state-of-the-art AI agents and approved by professional human stylists. Get exactly what a stylist would give to onboard a client at a fraction of the price, and feed this report to Tokyo for maximum personalization.
         </p>
-        <a class="pcard-link" href="https://report.heistfashion.tech" tabindex="-1" aria-hidden="true">
-          Get Your Report
+        <div class="pcard-link" tabindex="-1" aria-hidden="true">
+          Coming Soon
           <span class="pcard-link-arrow">→</span>
-        </a>
+        </div>
       </a>
 
     </div>
@@ -1219,7 +1254,7 @@
     </div>
     <div class="cta-action sr sd-2">
       <a href="https://discover.heistfashion.tech" class="btn-inverse">Start Discovering</a>
-      <a href="https://report.heistfashion.tech" class="btn-text-inv">View Thesis Plans</a>
+      <a href="#" onclick="showModal(event, 'The Fashion Thesis is launching soon. Stay tuned.')" class="btn-text-inv">View Thesis Plans</a>
     </div>
   </div>
 </section>
@@ -1238,29 +1273,32 @@
       <div class="foot-col-h">Tools</div>
       <a href="https://discover.heistfashion.tech" class="foot-link">Discovery Engine</a>
       <a href="https://tokyo.heistfashion.tech" class="foot-link">Tokyo — AI Stylist</a>
-      <a href="https://report.heistfashion.tech" class="foot-link">The Fashion Thesis</a>
-    </div>
-    <div>
-      <div class="foot-col-h">Company</div>
-      <a href="/about" class="foot-link">About</a>
-      <a href="/brands" class="foot-link">Brand Index</a>
-      <a href="/press" class="foot-link">Press</a>
+      <a href="#" onclick="showModal(event, 'The Fashion Thesis is launching soon. Stay tuned.')" class="foot-link">The Fashion Thesis</a>
     </div>
     <div>
       <div class="foot-col-h">Follow</div>
-      <a href="https://instagram.com/heist.style" class="foot-link" rel="noopener" target="_blank">Instagram</a>
-      <a href="https://youtube.com/@heist" class="foot-link" rel="noopener" target="_blank">YouTube</a>
-      <a href="https://reddit.com/r/IndianFashionAdvice" class="foot-link" rel="noopener" target="_blank">Reddit</a>
+      <a href="https://www.instagram.com/heistfashion.tech/" class="foot-link" rel="noopener" target="_blank">Instagram</a>
     </div>
   </div>
   <div class="foot-bottom">
     <div class="foot-copy">© 2026 Heist. All rights reserved.</div>
     <div style="display: flex; gap: 2rem;">
       <a href="/privacy" class="foot-copy" style="cursor: pointer;">Privacy</a>
-      <a href="/terms" class="foot-copy" style="cursor: pointer;">Terms</a>
+      <a href="/terms.html" class="foot-copy" style="cursor: pointer;">Terms</a>
     </div>
   </div>
 </footer>
+
+<!-- ══════════════════════════════════
+     CUSTOM MODAL UI
+══════════════════════════════════ -->
+<div id="msg-modal" class="modal-overlay" aria-hidden="true">
+  <div class="modal-box">
+    <div class="modal-title">Coming Soon</div>
+    <p class="body-txt" id="msg-content">This feature is currently under development.</p>
+    <button class="btn-solid modal-close" onclick="closeModal()">Understood</button>
+  </div>
+</div>
 
 <!-- ══════════════════════════════════
      COOKIE CONSENT UI
@@ -1291,6 +1329,16 @@
     localStorage.setItem('heist_cookies_accepted', 'true');
     cookieBanner.style.transform = 'translateY(100%)';
   });
+
+  // ── Modal Logic
+  function showModal(e, text) {
+    if (e) e.preventDefault();
+    document.getElementById('msg-content').innerText = text || 'Coming Soon!';
+    document.getElementById('msg-modal').classList.add('active');
+  }
+  function closeModal() {
+    document.getElementById('msg-modal').classList.remove('active');
+  }
 
   // ── Service Worker Registration
   if ('serviceWorker' in navigator) {

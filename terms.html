@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Terms & Conditions | HEIST</title>
+  <meta name="description" content="Terms and Conditions for HEIST Style Intelligence." />
+  <meta name="theme-color" content="#1e2221" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:       #1a1c1b;
+      --bg-deep:  #161817;
+      --teal:     #1b4a44;
+      --teal-mid: #22615a;
+      --teal-txt: #2e7d74;
+      --off-white:#e8e5df;
+      --stone:    #a09e9a;
+      --dust:     #5a5855;
+      --rule:     #2e3130;
+      --rule-light:#3d4140;
+
+      --f-serif:  'Cormorant Garamond', Georgia, serif;
+      --f-sans:   'DM Sans', system-ui, sans-serif;
+
+      --t-h1:      clamp(2.8rem, 6vw,   6rem);
+      --t-h2:      clamp(1.6rem, 3vw,   2.6rem);
+      --t-h3:      1.1rem;
+      --t-label:   0.65rem;
+      --t-body:    0.9rem;
+
+      --s-md: 2rem;
+      --s-lg: 4rem;
+      --s-xl: 7rem;
+      --max-w: 800px;
+      --gutter: max(2rem, 5vw);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    body { background: var(--bg); color: var(--off-white); font-family: var(--f-sans); font-weight: 300; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+
+    /* Navigation */
+    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--bg); border-bottom: 1px solid var(--rule); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 56px; padding: 0 var(--gutter); max-width: 1440px; margin: 0 auto; }
+    .nav-logo { font-family: var(--f-sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 0.35em; text-transform: uppercase; color: var(--off-white); }
+    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+    .nav-link { font-size: var(--t-label); font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dust); transition: color 0.3s ease; }
+    .nav-link:hover { color: var(--off-white); }
+    @media (max-width: 680px) { .nav-links { display: none; } }
+
+    /* Terms Content */
+    .legal-wrap { max-width: var(--max-w); margin: 0 auto; padding: calc(56px + var(--s-xl)) var(--gutter) var(--s-xl); }
+    .legal-header { margin-bottom: var(--s-lg); border-bottom: 1px solid var(--rule); padding-bottom: var(--s-lg); }
+    .label { font-family: var(--f-sans); font-size: var(--t-label); font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dust); display: block; margin-bottom: var(--s-md); }
+    .h1 { font-family: var(--f-serif); font-size: var(--t-h1); font-weight: 300; letter-spacing: 0.02em; line-height: 1; color: var(--off-white); }
+    
+    .legal-section { margin-bottom: var(--s-lg); }
+    .h2 { font-family: var(--f-serif); font-size: 2.2rem; font-weight: 300; letter-spacing: 0.02em; color: var(--off-white); margin-bottom: var(--s-md); border-bottom: 1px solid var(--rule); padding-bottom: 1rem; }
+    .h3 { font-family: var(--f-sans); font-size: var(--t-h3); font-weight: 400; color: var(--off-white); margin-top: var(--s-md); margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+    .body-txt { font-size: var(--t-body); font-weight: 300; line-height: 1.8; color: var(--stone); letter-spacing: 0.01em; margin-bottom: 1.5rem; }
+
+    /* Footer */
+    footer { background: var(--bg-deep); border-top: 1px solid var(--rule); padding: var(--s-lg) var(--gutter); text-align: center; }
+    .foot-copy { font-size: var(--t-label); font-weight: 400; letter-spacing: 0.14em; color: var(--dust); text-transform: uppercase; }
+  </style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Heist</a>
+    <ul class="nav-links">
+      <li><a href="https://discover.heistfashion.tech" class="nav-link">Discovery</a></li>
+      <li><a href="https://tokyo.heistfashion.tech" class="nav-link">Tokyo</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="legal-wrap">
+  <div class="legal-header">
+    <span class="label">Legal Framework</span>
+    <h1 class="h1">Terms &<br><em>Conditions</em></h1>
+  </div>
+
+  <section class="legal-section">
+    <h2 class="h2">1. The Service & AI Disclaimer</h2>
+    <p class="body-txt">We need to legally separate our styling engine from human error or user dissatisfaction.</p>
+    
+    <h3 class="h3">Algorithmic Nature</h3>
+    <p class="body-txt">The platform utilizes artificial intelligence to map geometric markers and generate style vectors. We must state that style is subjective and the AI operates on a probabilistic mathematical framework, meaning we do not guarantee user satisfaction with the aesthetic output.</p>
+    
+    <h3 class="h3">No Professional Liability</h3>
+    <p class="body-txt">The chatbot and reports act as digital advisory tools. We hold zero liability for how the user's social, romantic, or professional life is impacted by the wardrobe choices suggested by the engine.</p>
+  </section>
+
+  <section class="legal-section">
+    <h2 class="h2">2. Data Ingestion & Physical Privacy</h2>
+    <p class="body-txt">Because we require users to upload a selfie for the multimodal vision analysis, privacy is our highest liability.</p>
+    
+    <h3 class="h3">Image Processing</h3>
+    <p class="body-txt">We explicitly state that uploaded photos are processed solely to extract physical traits like face shape and structural geometry (lean vs. rounded).</p>
+    
+    <h3 class="h3">Persistent Memory Consent</h3>
+    <p class="body-txt">By using the service, the user consents to their calculated "Style DNA" and temporal chat data being permanently stored in our database.</p>
+    
+    <h3 class="h3">Pre-Event Tracking</h3>
+    <p class="body-txt">Users must acknowledge that any dates, times, or events they feed into the AI will be logged for proactive engagement.</p>
+  </section>
+
+  <section class="legal-section">
+    <h2 class="h2">3. Payments, Billing, and Subscriptions</h2>
+    <p class="body-txt">Whether we route through a Merchant of Record or direct Stripe production keys, the money flow needs strict boundaries.</p>
+    
+    <h3 class="h3">The Trial Gate</h3>
+    <p class="body-txt">Users acknowledge that the conversational AI offers a strict 10-message trial before triggering the paywall lock.</p>
+    
+    <h3 class="h3">Subscription Mechanics</h3>
+    <p class="body-txt">The recurring 400 INR subscription for the digital wingman will automatically renew unless canceled prior to the billing cycle.</p>
+    
+    <h3 class="h3">Premium Reports</h3>
+    <p class="body-txt">Purchases of the premium stylist reports (priced at 1,999-2,999 INR locally or $39-$49 internationally) are one-time, upfront transactions.</p>
+    
+    <h3 class="h3">Zero Refund Policy</h3>
+    <p class="body-txt">Because the product is an immediately delivered digital diagnostic report generated via compute resources, all sales are final. There are no refunds for "buyer's remorse."</p>
+  </section>
+
+  <section class="legal-section">
+    <h2 class="h2">4. Affiliate Link Disclosure</h2>
+    <p class="body-txt">The curation engine relies on a relational search that provides direct retail links for the recommended apparel.</p>
+    
+    <h3 class="h3">Monetization Transparency</h3>
+    <p class="body-txt">We must legally disclose that HEIST participates in affiliate marketing programs. Clicking on curated outfit links and making a purchase may generate a commission for the platform at no extra cost to the user.</p>
+  </section>
+
+  <section class="legal-section">
+    <h2 class="h2">5. Governing Law & Jurisdiction</h2>
+    <p class="body-txt">We have to anchor the business legally so we cannot be sued in random international courts.</p>
+    
+    <h3 class="h3">Local Authority</h3>
+    <p class="body-txt">Any legal disputes, chargeback conflicts, or platform governance issues will be strictly handled under the jurisdiction of the courts in Telangana, India.</p>
+    
+    <h3 class="h3">Binding Arbitration</h3>
+    <p class="body-txt">To prevent costly lawsuits, we should include a clause stating that any dispute must first attempt to be resolved through arbitration in our established jurisdiction.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-copy">© 2026 Heist. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
