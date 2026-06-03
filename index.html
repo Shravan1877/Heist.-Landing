@@ -1,1033 +1,707 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>HEIST — AI Style Intelligence for Indian Men | Find Your Style DNA</title>
-  <meta name="description" content="HEIST decodes your Style DNA using AI vision. Get precise outfit formulas, brand matches, and a personal AI stylist built for Indian men who refuse to dress mid." />
-  <link rel="canonical" href="https://heistfashion.tech/" />
-  <meta property="og:title" content="HEIST — AI Style Intelligence for Indian Men" />
+  <title>HEIST — AI Style Intelligence | Find Your Style DNA</title>
+  <meta name="description" content="HEIST decodes your Style DNA using AI vision. Get precise outfit formulas, brand matches, and a personal AI stylist built for those who refuse to dress mid." />
+  <link rel="canonical" href="https://heist.style/" />
+  <meta property="og:title" content="HEIST — AI Style Intelligence" />
   <meta property="og:description" content="Stop dressing mid. HEIST uses AI to decode your exact style DNA and maps it to outfits that actually work." />
-  <meta property="og:url" content="https://heistfashion.tech/" />
+  <meta property="og:url" content="https://heist.style/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="HEIST" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#1e2221" />
 
-  <!-- SECURITY & PWA FIXES -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https: fonts.googleapis.com; font-src 'self' https: fonts.gstatic.com data:; img-src 'self' https: data:; connect-src 'self' https:;">
-  <link rel="manifest" href="/site.webmanifest" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"HEIST","url":"https://heist.style","description":"AI-powered fashion intelligence platform","knowsAbout":["Fashion","AI Styling","Menswear","Womenswear","Personal Styling"]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"HEIST Style Intelligence","applicationCategory":"LifestyleApplication","operatingSystem":"Web","url":"https://heist.style"}</script>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://heistfashion.tech/#organization",
-        "name": "HEIST",
-        "url": "https://heistfashion.tech",
-        "description": "AI-powered fashion intelligence platform.",
-        "sameAs": [
-          "https://instagram.com/heist.style",
-          "https://youtube.com/@heist",
-          "https://www.wikidata.org/wiki/Q123456789"
-        ]
-      },
-      {
-        "@type": "SoftwareApplication",
-        "@id": "https://heistfashion.tech/#software",
-        "name": "HEIST Style Intelligence",
-        "applicationCategory": "LifestyleApplication",
-        "operatingSystem": "Web",
-        "url": "https://heistfashion.tech",
-        "author": {
-          "@id": "https://heistfashion.tech/#organization"
-        },
-        "offers": {
-          "@type": "Offer",
-          "priceCurrency": "USD",
-          "price": "49.00",
-          "availability": "https://schema.org/InStock",
-          "url": "https://report.heistfashion.tech"
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://heistfashion.tech/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How does HEIST decode my style DNA?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "HEIST uses advanced AI vision to analyze your body geometry, skin undertone, and lifestyle to create a precise aesthetic profile."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is HEIST only for men?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No, HEIST is built for everyone confident enough to dress well and refuse mediocrity, including both men and women."
-            }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
-
-  <!-- Cormorant Garamond: editorial sharp serif. Suisse/Aktiv alternative: DM Sans at narrow tracking -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <style>
-    /* ─────────────────────────────────────────
-       TOKENS
-    ───────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       TOKENS — DARK
+    ══════════════════════════════════════════ */
+    :root, [data-theme="dark"] {
+      /* Pale sage-teal — classy, not saturated */
+      --teal-solid:  #2c6b64;   /* CTA bg */
+      --teal-mid:    #3a857c;   /* hover */
+      --teal-pale:   #7ab5af;   /* text accent — muted, elegant */
+      --teal-wash:   rgba(44,107,100,0.12);
+      --teal-border: rgba(122,181,175,0.22);
+
+      /* Background — not raw, textured charcoal */
+      --bg:          #1c1e1d;
+      --bg-deep:     #181a19;
+      --bg-card:     #1f2120;
+
+      --off-white:   #e6e3dd;
+      --stone:       #93918d;
+      --dust:        #52514e;
+      --rule:        #2a2c2b;
+      --rule-light:  #363938;
+      --shadow:      rgba(0,0,0,0.55);
+
+      /* Texture SVG — linen weave, baked as data URI */
+      --tex-linen: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72 0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      /* Micro linen — finer grain for cards */
+      --tex-fine: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9 0.95' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.028'/%3E%3C/svg%3E");
+      /* Cross-hatch weave */
+      --tex-weave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M0 0h1v6H0zm5 0h1v6H5zM0 0h6v1H0zm0 5h6v1H0z' fill='%23ffffff' fill-opacity='0.018'/%3E%3C/svg%3E");
+    }
+
+    /* ══════════════════════════════════════════
+       TOKENS — LIGHT
+    ══════════════════════════════════════════ */
+    [data-theme="light"] {
+      --teal-solid:  #2c6b64;
+      --teal-mid:    #3a857c;
+      --teal-pale:   #2c6b64;
+      --teal-wash:   rgba(44,107,100,0.08);
+      --teal-border: rgba(44,107,100,0.3);
+
+      --bg:          #ede9e3;
+      --bg-deep:     #e6e2dc;
+      --bg-card:     #eae6e0;
+
+      --off-white:   #1c1e1d;
+      --stone:       #4d4c49;
+      --dust:        #8a8884;
+      --rule:        #cfc9c1;
+      --rule-light:  #bab4ac;
+      --shadow:      rgba(0,0,0,0.1);
+
+      --tex-linen: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72 0.78' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      --tex-fine: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9 0.95' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.04'/%3E%3C/svg%3E");
+      --tex-weave: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Cpath d='M0 0h1v6H0zm5 0h1v6H5zM0 0h6v1H0zm0 5h6v1H0z' fill='%23000000' fill-opacity='0.025'/%3E%3C/svg%3E");
+    }
+
+    /* ══════════════════════════════════════════
+       RESET
+    ══════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    body {
+      background-color: var(--bg);
+      /* Layered texture: linen noise + weave grid + solid base */
+      background-image: var(--tex-linen), var(--tex-weave);
+      background-size: 120px 120px, 6px 6px;
+      color: var(--off-white);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+      transition: background-color 0.7s cubic-bezier(0.25,1,0.5,1), color 0.7s cubic-bezier(0.25,1,0.5,1);
+    }
+
+    ::-webkit-scrollbar { width: 2px; }
+    ::-webkit-scrollbar-track { background: var(--bg-deep); }
+    ::-webkit-scrollbar-thumb { background: var(--teal-solid); }
+    a { text-decoration: none; color: inherit; }
+
+    /* ══════════════════════════════════════════
+       EASING
+    ══════════════════════════════════════════ */
     :root {
-      --bg:       #1a1c1b;        /* concrete grey */
-      --bg-deep:  #161817;        /* slightly deeper panels */
-      --teal:     #1b4a44;        /* deep dark teal — solid, no glow */
-      --teal-mid: #22615a;        /* hover state teal */
-      --teal-txt: #2e7d74;        /* teal used for text accents */
-      --off-white:#e8e5df;        /* primary text — slightly warm, not pure white */
-      --stone:    #a09e9a;        /* secondary text */
-      --dust:     #5a5855;        /* muted / metadata */
-      --rule:     #2e3130;        /* hairline borders */
-      --rule-light:#3d4140;       /* slightly lighter rule */
+      --ease-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
 
-      --f-serif:  'Cormorant Garamond', Georgia, serif;
-      --f-sans:   'DM Sans', system-ui, sans-serif;
-
-      /* type scale */
-      --t-display: clamp(3.6rem, 9.5vw, 9rem);
-      --t-h1:      clamp(2.8rem, 6vw,   6rem);
-      --t-h2:      clamp(1.6rem, 3vw,   2.6rem);
-      --t-h3:      1.1rem;
-      --t-label:   0.65rem;
+      --f-serif: 'Cormorant Garamond', Georgia, serif;
+      --f-sans:  'DM Sans', system-ui, sans-serif;
+      --t-display: clamp(4rem, 11vw, 10.5rem);
+      --t-h2:      clamp(1.6rem, 3vw, 2.6rem);
+      --t-label:   0.63rem;
       --t-body:    0.9rem;
-
-      /* spacing rhythm */
-      --s-xs: 0.5rem;
-      --s-sm: 1rem;
-      --s-md: 2rem;
-      --s-lg: 4rem;
-      --s-xl: 7rem;
-      --s-2xl:11rem;
-
-      /* layout */
+      --s-sm: 1rem; --s-md: 2rem; --s-lg: 4rem; --s-xl: 7rem; --s-2xl: 11rem;
       --max-w: 1440px;
       --gutter: max(2rem, 5vw);
     }
 
-    /* ─────────────────────────────────────────
-       RESET & BASE
-    ───────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      font-size: 16px;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      background: var(--bg);
-      color: var(--off-white);
-      font-family: var(--f-sans);
-      font-weight: 300;
-      overflow-x: hidden;
-    }
-
-    ::-webkit-scrollbar { width: 2px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--teal); }
-
-    a { text-decoration: none; color: inherit; }
-    img { display: block; max-width: 100%; }
-
-    /* ─────────────────────────────────────────
-       LAYOUT UTILITIES
-    ───────────────────────────────────────── */
-    .wrap {
-      width: 100%;
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 0 var(--gutter);
-    }
-
-    .rule-h { width: 100%; height: 1px; background: var(--rule); }
-    .rule-v { width: 1px; background: var(--rule); align-self: stretch; }
-
-    /* ─────────────────────────────────────────
+    /* ══════════════════════════════════════════
        TYPOGRAPHY
-    ───────────────────────────────────────── */
+    ══════════════════════════════════════════ */
     .label {
-      font-family: var(--f-sans);
-      font-size: var(--t-label);
-      font-weight: 400;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--dust);
+      font-family: var(--f-sans); font-size: var(--t-label); font-weight: 400;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--dust);
     }
-
     .label-teal {
-      font-family: var(--f-sans);
-      font-size: var(--t-label);
-      font-weight: 400;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--teal-txt);
+      font-family: var(--f-sans); font-size: var(--t-label); font-weight: 400;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal-pale);
     }
-
-    .display {
-      font-family: var(--f-serif);
-      font-size: var(--t-display);
-      font-weight: 300;
-      letter-spacing: -0.01em;
-      line-height: 0.9;
-      color: var(--off-white);
-    }
-
-    .h1 {
-      font-family: var(--f-serif);
-      font-size: var(--t-h1);
-      font-weight: 300;
-      letter-spacing: 0.02em;
-      line-height: 1;
-      color: var(--off-white);
-    }
-
-    .h2 {
-      font-family: var(--f-sans);
-      font-size: var(--t-h2);
-      font-weight: 300;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      line-height: 1.1;
-      color: var(--off-white);
-    }
-
     .body-txt {
-      font-size: var(--t-body);
-      font-weight: 300;
-      line-height: 1.8;
-      color: var(--stone);
-      letter-spacing: 0.01em;
+      font-size: var(--t-body); font-weight: 300; line-height: 1.9;
+      color: var(--stone); letter-spacing: 0.01em;
+    }
+    .h2 {
+      font-family: var(--f-sans); font-size: var(--t-h2); font-weight: 300;
+      letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.1; color: var(--off-white);
     }
 
-    /* ─────────────────────────────────────────
-       SCROLL REVEAL — calm, long transitions
-    ───────────────────────────────────────── */
-    .sr {
-      opacity: 0;
-      transform: translateY(32px);
-      transition:
-        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 1.2s ease;
+    /* ══════════════════════════════════════════
+       SCROLL PROGRESS
+    ══════════════════════════════════════════ */
+    .progress-bar {
+      position: fixed; top: 56px; left: 0; right: 0; z-index: 199;
+      height: 1px; background: var(--rule); pointer-events: none;
     }
-    .sr.in {
-      opacity: 1;
-      transform: translateY(0);
+    .progress-fill {
+      height: 100%; width: 0%;
+      background: var(--teal-pale);
+      transition: width 0.08s linear;
     }
-    .sr-fade {
-      opacity: 0;
-      transition: opacity 1.4s ease;
-    }
-    .sr-fade.in { opacity: 1; }
 
-    /* delay steps */
-    .sd-1 { transition-delay: 0.1s; }
-    .sd-2 { transition-delay: 0.22s; }
-    .sd-3 { transition-delay: 0.36s; }
-    .sd-4 { transition-delay: 0.5s; }
-    .sd-5 { transition-delay: 0.65s; }
-
-    /* ─────────────────────────────────────────
-       HERO ENTRANCE (page load — no scroll needed)
-    ───────────────────────────────────────── */
-    .hero-enter {
-      opacity: 0;
-      transform: translateY(28px);
-      animation: heroIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    @keyframes heroIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .he-1 { animation-delay: 0.1s; }
-    .he-2 { animation-delay: 0.28s; }
-    .he-3 { animation-delay: 0.46s; }
-    .he-4 { animation-delay: 0.64s; }
-    .he-5 { animation-delay: 0.82s; }
-    .he-6 { animation-delay: 1.0s; }
-
-    /* ─────────────────────────────────────────
-       NAVIGATION
-    ───────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════ */
     .nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: var(--bg);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background-color: var(--bg);
+      background-image: var(--tex-fine);
+      background-size: 80px 80px;
       border-bottom: 1px solid var(--rule);
-      transition: border-color 0.4s ease;
+      transition:
+        background-color 0.7s var(--ease-quart),
+        transform 0.6s var(--ease-expo),
+        border-color 0.3s ease;
+      will-change: transform;
     }
+    .nav.hidden { transform: translateY(-100%); }
     .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-      padding: 0 var(--gutter);
-      max-width: var(--max-w);
-      margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px; padding: 0 var(--gutter); max-width: var(--max-w); margin: 0 auto; gap: 1.5rem;
     }
     .nav-logo {
-      font-family: var(--f-sans);
-      font-size: 0.78rem;
-      font-weight: 400;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--off-white);
+      font-family: var(--f-sans); font-size: 0.78rem; font-weight: 400;
+      letter-spacing: 0.38em; text-transform: uppercase; color: var(--off-white);
+      transition: opacity 0.3s ease, letter-spacing 0.5s var(--ease-expo);
     }
-    .nav-links {
-      display: flex;
-      gap: 2.4rem;
-      list-style: none;
-    }
+    .nav-logo:hover { opacity: 0.55; letter-spacing: 0.5em; }
+    .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+    @media (max-width: 700px) { .nav-links { display: none; } }
     .nav-link {
-      font-size: var(--t-label);
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--dust);
-      transition: color 0.3s ease;
-      position: relative;
+      font-size: var(--t-label); font-weight: 400; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--dust);
+      transition: color 0.25s ease; position: relative; padding-bottom: 3px;
     }
     .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -2px; left: 0;
-      width: 0; height: 1px;
-      background: var(--off-white);
-      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 1px; background: var(--teal-pale);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.5s var(--ease-expo);
     }
     .nav-link:hover { color: var(--off-white); }
-    .nav-link:hover::after { width: 100%; }
+    .nav-link:hover::after { transform: scaleX(1); }
+    .nav-right { display: flex; align-items: center; gap: 0.8rem; }
+
+    .theme-btn {
+      width: 34px; height: 34px; border: 1px solid var(--rule-light);
+      background: transparent; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; color: var(--dust);
+      transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease;
+      flex-shrink: 0;
+    }
+    .theme-btn:hover { border-color: var(--teal-pale); color: var(--off-white); background: var(--teal-wash); }
+    .icon-sun { display: none; }
+    .icon-moon { display: block; }
+    [data-theme="light"] .icon-sun { display: block; }
+    [data-theme="light"] .icon-moon { display: none; }
 
     .nav-cta {
-      font-size: var(--t-label);
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--off-white);
-      border: 1px solid var(--rule-light);
-      padding: 0.55rem 1.2rem;
-      transition: background 0.3s ease, border-color 0.3s ease;
+      font-size: var(--t-label); font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--off-white); border: 1px solid var(--rule-light); padding: 0.5rem 1.2rem;
+      transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease;
     }
-    .nav-cta:hover {
-      background: var(--teal);
-      border-color: var(--teal);
-    }
+    .nav-cta:hover { background: var(--teal-solid); border-color: var(--teal-solid); color: #e6e3dd; }
 
-    @media (max-width: 680px) {
-      .nav-links { display: none; }
-    }
-
-    /* ─────────────────────────────────────────
+    /* ══════════════════════════════════════════
        HERO
-    ───────────────────────────────────────── */
+    ══════════════════════════════════════════ */
     .hero {
-      min-height: 100svh;
-      display: grid;
-      grid-template-rows: 1fr auto;
-      padding-top: 56px; /* nav height */
-      border-bottom: 1px solid var(--rule);
+      min-height: 100svh; display: grid; grid-template-rows: 1fr auto;
+      padding-top: 56px; border-bottom: 1px solid var(--rule);
+      position: relative; overflow: hidden;
+      background-color: var(--bg);
+      background-image: var(--tex-linen), var(--tex-weave);
+      background-size: 120px 120px, 6px 6px;
     }
+
+    /* Ambient structure: slow rings, elegant */
+    .hero-ambience {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0;
+    }
+    .hero-ring {
+      position: absolute; border-radius: 50%;
+      border: 1px solid var(--off-white); opacity: 0;
+      /* opacity set by GSAP on load */
+    }
+    .ring-a { width: 780px; height: 780px; top: -260px; right: -210px; border-color: var(--teal-pale); border-style: solid; }
+    .ring-b { width: 520px; height: 520px; top: -100px; right: 40px; border-style: dashed; border-color: var(--teal-pale); }
+    .ring-c { width: 260px; height: 260px; top: 70px; right: 190px; border-color: var(--rule-light); }
+
+    /* Grid lines — horizontal editorial marks */
+    .hero-grid-lines {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    .hgl {
+      position: absolute; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--rule) 15%, var(--rule) 85%, transparent);
+      opacity: 0; /* GSAP reveals */
+    }
+    .hgl-1 { top: 33%; }
+    .hgl-2 { top: 66%; }
+
     .hero-body {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: grid; grid-template-columns: 1fr 1fr;
       align-items: end;
       padding: var(--s-xl) var(--gutter) var(--s-lg);
-      max-width: var(--max-w);
-      margin: 0 auto;
-      width: 100%;
-      gap: var(--s-lg);
+      max-width: var(--max-w); margin: 0 auto; width: 100%;
+      gap: var(--s-lg); position: relative; z-index: 2;
     }
     @media (max-width: 860px) {
-      .hero-body {
-        grid-template-columns: 1fr;
-        align-items: start;
-        padding-top: var(--s-lg);
-        gap: var(--s-md);
-      }
+      .hero-body { grid-template-columns: 1fr; align-items: start; padding-top: var(--s-lg); gap: var(--s-md); }
     }
-
     .hero-left { display: flex; flex-direction: column; gap: var(--s-md); }
-    .hero-right {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      gap: var(--s-md);
-      padding-bottom: 0.2rem;
-    }
-    @media (max-width: 860px) {
-      .hero-right { padding-bottom: var(--s-lg); }
-    }
+    .hero-right { display: flex; flex-direction: column; justify-content: flex-end; gap: var(--s-md); }
+    @media (max-width: 860px) { .hero-right { padding-bottom: var(--s-lg); } }
 
-    .hero-index {
-      display: flex;
-      align-items: center;
-      gap: var(--s-sm);
-    }
-    .hero-index-line {
-      width: 28px; height: 1px; background: var(--dust);
-    }
+    .hero-index { display: flex; align-items: center; gap: var(--s-sm); }
+    .hero-index-line { width: 0px; height: 1px; background: var(--dust); /* GSAP expands */ }
 
+    /* Headline — mask each line */
+    .line-mask { display: block; overflow: hidden; }
+    .line-inner { display: block; will-change: transform; }
     .hero-display {
-      font-family: var(--f-serif);
-      font-size: var(--t-display);
-      font-weight: 300;
-      line-height: 0.88;
-      letter-spacing: -0.01em;
-      color: var(--off-white);
+      font-family: var(--f-serif); font-size: var(--t-display);
+      font-weight: 300; line-height: 0.87; letter-spacing: -0.015em; color: var(--off-white);
     }
-    .hero-display em {
-      font-style: italic;
-      color: var(--stone);
-    }
+    .hero-display.italic { font-style: italic; color: var(--stone); }
 
-    .hero-sub-block {
-      display: flex;
-      flex-direction: column;
-      gap: var(--s-sm);
-      max-width: 340px;
-      padding-top: var(--s-sm);
-    }
+    .hero-sub-block { max-width: 360px; }
+    .hero-cta-row { display: flex; align-items: center; gap: var(--s-md); flex-wrap: wrap; }
 
-    .hero-cta-row {
-      display: flex;
-      align-items: center;
-      gap: var(--s-md);
-    }
-
+    /* Magnetic-feel button */
     .btn-solid {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--teal);
-      color: var(--off-white);
-      font-size: var(--t-label);
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.85rem 2rem;
-      border: 1px solid var(--teal);
-      transition: background 0.35s ease, border-color 0.35s ease;
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      background: var(--teal-solid); color: #e6e3dd;
+      font-size: var(--t-label); font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 0.95rem 2.2rem; border: 1px solid var(--teal-solid);
+      position: relative; overflow: hidden; cursor: pointer;
+      transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     }
-    .btn-solid:hover {
-      background: var(--teal-mid);
-      border-color: var(--teal-mid);
+    /* shimmer sweep */
+    .btn-solid::before {
+      content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+      background: linear-gradient(105deg, transparent, rgba(255,255,255,0.13), transparent);
+      transition: left 0.6s var(--ease-expo);
     }
+    .btn-solid:hover::before { left: 160%; }
+    .btn-solid:hover { background: var(--teal-mid); border-color: var(--teal-mid); box-shadow: 0 8px 32px var(--shadow); }
+    .btn-solid svg { transition: transform 0.45s var(--ease-expo); }
+    .btn-solid:hover svg { transform: translateX(5px); }
 
     .btn-text {
-      font-size: var(--t-label);
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--dust);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: color 0.3s ease;
-      border-bottom: 1px solid transparent;
-      padding-bottom: 2px;
+      font-size: var(--t-label); font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--dust); display: inline-flex; align-items: center; gap: 0.5rem;
+      border-bottom: 1px solid transparent; padding-bottom: 2px;
+      transition: color 0.3s ease, border-color 0.3s ease;
     }
-    .btn-text:hover {
-      color: var(--off-white);
-      border-bottom-color: var(--off-white);
-    }
+    .btn-text:hover { color: var(--off-white); border-color: var(--off-white); }
 
-    /* hero right col — stat list */
-    .hero-stat-list {
-      display: flex;
-      flex-direction: column;
-      border-top: 1px solid var(--rule);
-    }
+    /* Stats */
+    .hero-stat-list { display: flex; flex-direction: column; border-top: 1px solid var(--rule); }
     .hero-stat {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      padding: var(--s-sm) 0;
-      border-bottom: 1px solid var(--rule);
+      display: flex; align-items: baseline; justify-content: space-between;
+      padding: var(--s-sm) 0; border-bottom: 1px solid var(--rule);
+      transition: padding-left 0.45s var(--ease-expo), background 0.4s ease;
     }
+    .hero-stat:hover { padding-left: 0.6rem; }
     .hero-stat-num {
-      font-family: var(--f-serif);
-      font-size: 2.2rem;
-      font-weight: 300;
-      color: var(--off-white);
-      letter-spacing: 0.02em;
+      font-family: var(--f-serif); font-size: 2.4rem; font-weight: 300;
+      color: var(--off-white); letter-spacing: 0.02em;
     }
-    .hero-stat-lbl {
-      font-size: var(--t-label);
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--dust);
-    }
+    .hero-stat-lbl { font-size: var(--t-label); font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dust); }
 
-    /* hero bottom bar */
     .hero-bottom {
-      border-top: 1px solid var(--rule);
-      max-width: var(--max-w);
-      margin: 0 auto;
-      width: 100%;
-      padding: 1.1rem var(--gutter);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--s-md);
-      flex-wrap: wrap;
+      border-top: 1px solid var(--rule); max-width: var(--max-w); margin: 0 auto; width: 100%;
+      padding: 1.1rem var(--gutter); display: flex; align-items: center;
+      justify-content: space-between; gap: var(--s-md); flex-wrap: wrap;
+      position: relative; z-index: 2;
     }
-    .hero-bottom-tags {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-    }
+    .hero-bottom-tags { display: flex; align-items: center; gap: 2rem; }
 
-    /* ─────────────────────────────────────────
-       SECTION HEADER — shared
-    ───────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       SECTION HEADER
+    ══════════════════════════════════════════ */
     .sec-header {
       padding: var(--s-xl) var(--gutter) var(--s-lg);
-      max-width: var(--max-w);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: end;
-      gap: var(--s-lg);
+      max-width: var(--max-w); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: var(--s-lg);
       border-bottom: 1px solid var(--rule);
     }
     @media (max-width: 760px) {
-      .sec-header {
-        grid-template-columns: 1fr;
-        gap: var(--s-md);
-        padding-top: var(--s-lg);
-        padding-bottom: var(--s-md);
-      }
+      .sec-header { grid-template-columns: 1fr; gap: var(--s-md); padding-top: var(--s-lg); padding-bottom: var(--s-md); }
     }
-    .sec-header-num {
-      font-family: var(--f-serif);
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      color: var(--dust);
-      margin-bottom: var(--s-md);
-    }
+    .sec-header-num { font-size: 0.7rem; letter-spacing: 0.3em; color: var(--dust); margin-bottom: var(--s-md); font-family: var(--f-serif); }
 
-    /* ─────────────────────────────────────────
-       PRODUCT SECTION
-    ───────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       PRODUCT CARDS
+    ══════════════════════════════════════════ */
     .prod-section {
       border-bottom: 1px solid var(--rule);
+      background-color: var(--bg-card);
+      background-image: var(--tex-fine);
+      background-size: 80px 80px;
     }
-
-    /* three-up grid: featured large left, two right stacked */
     .prod-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      grid-template-rows: auto auto;
-      max-width: var(--max-w);
-      margin: 0 auto;
+      display: grid; grid-template-columns: 1.2fr 1fr; max-width: var(--max-w); margin: 0 auto;
     }
-    @media (max-width: 960px) {
-      .prod-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 960px) { .prod-grid { grid-template-columns: 1fr; } }
 
-    /* Card */
     .pcard {
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
       padding: var(--s-lg) var(--gutter);
-      border-right: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      cursor: pointer;
-      transition: background 0.5s ease;
-      text-decoration: none;
-      color: inherit;
-      position: relative;
-      overflow: hidden;
+      border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+      cursor: pointer; text-decoration: none; color: inherit;
+      position: relative; overflow: hidden;
+      background-color: var(--bg-card);
+      background-image: var(--tex-fine);
+      background-size: 80px 80px;
+      transition: background-color 0.55s var(--ease-quart);
     }
-    .pcard:last-child,
-    .pcard.no-right { border-right: none; }
-    @media (max-width: 960px) {
-      .pcard { border-right: none; }
-    }
+    .pcard:last-child, .pcard.no-right { border-right: none; }
+    @media (max-width: 960px) { .pcard { border-right: none; } }
 
-    /* Featured card spans two rows */
     .pcard.feat {
-      grid-row: span 2;
-      min-height: 560px;
-      justify-content: space-between;
-      padding: var(--s-xl) var(--gutter);
+      grid-row: span 2; min-height: 580px;
+      justify-content: space-between; padding: var(--s-xl) var(--gutter);
     }
-    @media (max-width: 960px) {
-      .pcard.feat { min-height: 0; grid-row: span 1; }
-    }
+    @media (max-width: 960px) { .pcard.feat { min-height: 0; grid-row: span 1; } }
 
-    /* Hover: clean background shift — no glow */
-    .pcard:hover { background: var(--bg-deep); }
-
-    /* Card internals */
-    .pcard-index {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: var(--s-xl);
+    /* Teal wash creeps up from bottom on hover */
+    .pcard::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 0%;
+      background: var(--teal-wash);
+      transition: height 0.7s var(--ease-expo); z-index: 0;
     }
+    .pcard:hover::before { height: 100%; }
+    .pcard > * { position: relative; z-index: 1; }
+
+    /* Left accent bar — grows on hover */
+    .pcard::after {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px; background: var(--teal-pale);
+      transform: scaleY(0); transform-origin: bottom;
+      transition: transform 0.6s var(--ease-expo); z-index: 2;
+    }
+    .pcard:hover::after { transform: scaleY(1); }
+
+    .pcard-index { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--s-xl); }
     .pcard.feat .pcard-index { margin-bottom: 0; }
-
-    .pcard-num {
-      font-family: var(--f-serif);
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      color: var(--dust);
-    }
-
+    .pcard-num { font-family: var(--f-serif); font-size: 0.7rem; letter-spacing: 0.3em; color: var(--dust); }
     .pcard-icon {
-      width: 40px; height: 40px;
-      border: 1px solid var(--rule-light);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--teal-txt);
-      transition: border-color 0.35s ease, background 0.35s ease;
-      flex-shrink: 0;
+      width: 42px; height: 42px; border: 1px solid var(--rule-light);
+      display: flex; align-items: center; justify-content: center; color: var(--teal-pale);
+      transition: border-color 0.45s ease, background 0.45s ease, color 0.45s ease, transform 0.5s var(--ease-expo);
     }
-    .pcard:hover .pcard-icon {
-      border-color: var(--teal);
-      background: var(--teal);
-      color: var(--off-white);
-    }
+    .pcard:hover .pcard-icon { border-color: var(--teal-solid); background: var(--teal-solid); color: #e6e3dd; transform: rotate(10deg) scale(1.08); }
 
     .pcard-name {
-      font-family: var(--f-serif);
-      font-size: clamp(2.8rem, 5.5vw, 5rem);
-      font-weight: 300;
-      letter-spacing: 0.01em;
-      line-height: 0.92;
-      color: var(--off-white);
-      margin-bottom: var(--s-md);
+      font-family: var(--f-serif); font-size: clamp(2.8rem, 5.5vw, 5rem);
+      font-weight: 300; letter-spacing: 0.01em; line-height: 0.92; color: var(--off-white); margin-bottom: var(--s-md);
+      transition: color 0.4s ease;
     }
+    .pcard:hover .pcard-name { color: var(--off-white); }
     .pcard-name em { font-style: italic; color: var(--stone); }
 
     .pcard-tag {
-      display: inline-block;
-      font-size: var(--t-label);
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--teal-txt);
-      border: 1px solid var(--teal);
-      padding: 0.3rem 0.7rem;
-      margin-bottom: var(--s-md);
+      display: inline-block; font-size: var(--t-label); font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal-pale);
+      border: 1px solid var(--teal-border); padding: 0.3rem 0.7rem; margin-bottom: var(--s-md);
+      transition: background 0.35s ease, color 0.35s ease, border-color 0.35s ease;
     }
+    .pcard:hover .pcard-tag { background: var(--teal-solid); color: #e6e3dd; border-color: var(--teal-solid); }
 
     .pcard-desc {
-      font-size: var(--t-body);
-      font-weight: 300;
-      line-height: 1.8;
-      color: var(--stone);
-      letter-spacing: 0.01em;
-      max-width: 360px;
-      margin-bottom: var(--s-lg);
+      font-size: var(--t-body); font-weight: 300; line-height: 1.85; color: var(--stone);
+      letter-spacing: 0.01em; max-width: 360px; margin-bottom: var(--s-lg);
     }
-
-    /* CTA link — underline grows */
     .pcard-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.7rem;
-      font-size: var(--t-label);
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--off-white);
-      border-bottom: 1px solid var(--rule-light);
-      padding-bottom: 3px;
-      transition:
-        border-color 0.4s ease,
-        color 0.3s ease;
+      display: inline-flex; align-items: center; gap: 0.7rem;
+      font-size: var(--t-label); font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--off-white); border-bottom: 1px solid var(--rule-light); padding-bottom: 3px;
+      transition: border-color 0.4s ease, gap 0.45s var(--ease-expo);
       width: fit-content;
     }
-    .pcard:hover .pcard-link {
-      border-color: var(--off-white);
-      color: var(--off-white);
-    }
-    .pcard-link-arrow {
-      display: inline-block;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .pcard:hover .pcard-link-arrow { transform: translateX(5px); }
+    .pcard:hover .pcard-link { border-color: var(--off-white); gap: 1.3rem; }
 
-    /* Featured: large number decoration */
     .pcard-bg-num {
-      position: absolute;
-      bottom: -0.1em;
-      right: -0.02em;
-      font-family: var(--f-serif);
-      font-size: clamp(8rem, 18vw, 18rem);
-      font-weight: 300;
-      color: rgba(255,255,255,0.024);
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
-      letter-spacing: -0.02em;
+      position: absolute; bottom: -0.1em; right: -0.02em;
+      font-family: var(--f-serif); font-size: clamp(8rem, 18vw, 18rem); font-weight: 300;
+      color: var(--off-white); opacity: 0.022; line-height: 1; pointer-events: none;
+      user-select: none; letter-spacing: -0.02em;
+      transition: opacity 0.5s ease, transform 0.7s var(--ease-expo);
     }
+    .pcard:hover .pcard-bg-num { opacity: 0.05; transform: scale(1.06) translateY(-14px); }
 
-    /* ─────────────────────────────────────────
-       MANIFESTO — full bleed editorial
-    ───────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       MANIFESTO
+    ══════════════════════════════════════════ */
     .manifesto {
-      background: var(--bg-deep);
+      background-color: var(--bg-deep);
+      background-image: var(--tex-linen);
+      background-size: 120px 120px;
       border-bottom: 1px solid var(--rule);
       padding: var(--s-2xl) var(--gutter);
+      position: relative; overflow: hidden;
+      transition: background-color 0.7s var(--ease-quart);
+    }
+    /* Teal vertical accent line */
+    .manifesto::before {
+      content: ''; position: absolute; top: 0; bottom: 0;
+      left: calc(var(--gutter) + 33%); width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--teal-border) 20%, var(--teal-border) 80%, transparent);
     }
     .manifesto-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: var(--s-xl);
-      align-items: center;
+      max-width: var(--max-w); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 2fr; gap: var(--s-xl); align-items: center;
+      position: relative; z-index: 1;
     }
-    @media (max-width: 900px) {
-      .manifesto-inner { grid-template-columns: 1fr; gap: var(--s-lg); }
-    }
-    .manifesto-label-col {
-      display: flex;
-      flex-direction: column;
-      gap: var(--s-md);
-    }
-    .manifesto-rule {
-      width: 1px;
-      height: 48px;
-      background: var(--rule-light);
-    }
+    @media (max-width: 900px) { .manifesto-inner { grid-template-columns: 1fr; gap: var(--s-lg); } }
+    .manifesto-label-col { display: flex; flex-direction: column; gap: var(--s-md); }
+    .manifesto-rule { width: 1px; height: 48px; background: var(--teal-border); }
     .manifesto-headline {
-      font-family: var(--f-serif);
-      font-size: clamp(2.8rem, 7vw, 6.5rem);
-      font-weight: 300;
-      line-height: 1;
-      letter-spacing: 0.01em;
-      color: var(--off-white);
+      font-family: var(--f-serif); font-size: clamp(2.8rem, 7vw, 6.5rem);
+      font-weight: 300; line-height: 1; letter-spacing: 0.01em; color: var(--off-white);
     }
-    .manifesto-headline em {
-      font-style: italic;
-      color: var(--stone);
-    }
-    .manifesto-body {
-      margin-top: var(--s-lg);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--s-lg);
-    }
-    @media (max-width: 640px) {
-      .manifesto-body { grid-template-columns: 1fr; }
-    }
+    .manifesto-headline em { font-style: italic; color: var(--stone); }
+    .word-wrap { display: inline-block; overflow: hidden; vertical-align: bottom; }
+    .word-inner { display: inline-block; }
+    .manifesto-body { margin-top: var(--s-lg); display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-lg); }
+    @media (max-width: 640px) { .manifesto-body { grid-template-columns: 1fr; } }
 
-    /* ─────────────────────────────────────────
-       PROCESS — editorial list
-    ───────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       PROCESS
+    ══════════════════════════════════════════ */
     .process-section {
       border-bottom: 1px solid var(--rule);
+      background-color: var(--bg);
+      background-image: var(--tex-weave);
+      background-size: 6px 6px;
     }
-    .process-list {
-      max-width: var(--max-w);
-      margin: 0 auto;
-    }
+    .process-list { max-width: var(--max-w); margin: 0 auto; }
     .process-item {
-      display: grid;
-      grid-template-columns: 80px 1fr 1fr;
-      align-items: start;
-      gap: var(--s-lg);
-      padding: var(--s-lg) var(--gutter);
+      display: grid; grid-template-columns: 80px 1fr 1fr; align-items: start;
+      gap: var(--s-lg); padding: var(--s-lg) var(--gutter);
       border-bottom: 1px solid var(--rule);
-      transition: background 0.5s ease;
+      position: relative;
+      transition: background 0.55s var(--ease-quart), padding-left 0.45s var(--ease-expo);
     }
+    /* left bar */
+    .process-item::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+      background: var(--teal-pale); transform: scaleY(0); transform-origin: bottom;
+      transition: transform 0.55s var(--ease-expo);
+    }
+    .process-item:hover::before { transform: scaleY(1); }
     .process-item:last-child { border-bottom: none; }
-    .process-item:hover { background: var(--bg-deep); }
+    .process-item:hover { background-color: var(--bg-deep); }
     @media (max-width: 780px) {
-      .process-item {
-        grid-template-columns: 40px 1fr;
-        grid-template-rows: auto auto;
-      }
+      .process-item { grid-template-columns: 40px 1fr; }
       .process-item-desc { grid-column: 2; }
     }
-    .proc-num {
-      font-family: var(--f-serif);
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      color: var(--dust);
-      padding-top: 0.25rem;
-    }
+    .proc-num { font-family: var(--f-serif); font-size: 0.7rem; letter-spacing: 0.3em; color: var(--dust); padding-top: 0.25rem; }
     .proc-title {
-      font-family: var(--f-serif);
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
-      font-weight: 300;
-      letter-spacing: 0.02em;
-      color: var(--off-white);
+      font-family: var(--f-serif); font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 300; letter-spacing: 0.02em; color: var(--off-white);
+      transition: color 0.35s ease;
     }
-    .proc-desc {
-      font-size: var(--t-body);
-      font-weight: 300;
-      line-height: 1.85;
-      color: var(--stone);
-    }
+    .process-item:hover .proc-title { color: var(--teal-pale); }
+    .proc-desc { font-size: var(--t-body); font-weight: 300; line-height: 1.85; color: var(--stone); }
 
-    /* ─────────────────────────────────────────
+    /* ══════════════════════════════════════════
        CTA BAND
-    ───────────────────────────────────────── */
+    ══════════════════════════════════════════ */
     .cta-band {
-      background: var(--teal);
-      border-bottom: 1px solid var(--rule);
+      background-color: var(--teal-solid);
+      background-image: var(--tex-linen);
+      background-size: 120px 120px;
+      border-bottom: 1px solid rgba(0,0,0,0.2);
+      position: relative; overflow: hidden;
+      transition: background-color 0.7s var(--ease-quart);
+    }
+    /* Diagonal rule — calm structural mark */
+    .cta-band::before {
+      content: ''; position: absolute; top: -50%; right: 8%;
+      width: 1px; height: 200%;
+      background: rgba(255,255,255,0.09);
+      transform: rotate(18deg);
     }
     .cta-inner {
-      max-width: var(--max-w);
-      margin: 0 auto;
+      max-width: var(--max-w); margin: 0 auto;
       padding: var(--s-xl) var(--gutter);
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: end;
-      gap: var(--s-lg);
+      display: grid; grid-template-columns: 1fr auto; align-items: end; gap: var(--s-lg);
+      position: relative; z-index: 2;
     }
-    @media (max-width: 680px) {
-      .cta-inner { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 680px) { .cta-inner { grid-template-columns: 1fr; } }
     .cta-headline {
-      font-family: var(--f-serif);
-      font-size: clamp(2.4rem, 5.5vw, 5rem);
-      font-weight: 300;
-      line-height: 0.95;
-      letter-spacing: 0.01em;
-      color: var(--off-white);
+      font-family: var(--f-serif); font-size: clamp(2.6rem, 6vw, 5.5rem);
+      font-weight: 300; line-height: 0.93; letter-spacing: 0.01em; color: #e6e3dd;
     }
-    .cta-headline em { font-style: italic; opacity: 0.6; }
-    .cta-sub {
-      font-size: var(--t-body);
-      font-weight: 300;
-      line-height: 1.8;
-      color: rgba(232, 229, 223, 0.65);
-      margin-top: var(--s-md);
-      max-width: 420px;
-    }
+    .cta-headline em { font-style: italic; opacity: 0.55; }
+    .cta-sub { font-size: var(--t-body); font-weight: 300; line-height: 1.8; color: rgba(230,227,221,0.6); margin-top: var(--s-md); max-width: 420px; }
     .cta-action { display: flex; flex-direction: column; align-items: flex-end; gap: var(--s-md); }
     @media (max-width: 680px) { .cta-action { align-items: flex-start; } }
 
     .btn-inverse {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--off-white);
-      color: var(--teal);
-      font-size: var(--t-label);
-      font-weight: 500;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 0.85rem 2rem;
-      border: 1px solid var(--off-white);
-      transition: background 0.35s ease, color 0.35s ease;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: #e6e3dd; color: var(--teal-solid);
+      font-size: var(--t-label); font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 0.95rem 2.2rem; border: 1px solid #e6e3dd;
+      position: relative; overflow: hidden;
+      transition: background 0.4s ease, color 0.4s ease;
     }
-    .btn-inverse:hover {
-      background: transparent;
-      color: var(--off-white);
+    .btn-inverse::before {
+      content: ''; position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+      background: linear-gradient(105deg, transparent, rgba(44,107,100,0.08), transparent);
+      transition: left 0.6s var(--ease-expo);
     }
+    .btn-inverse:hover::before { left: 160%; }
+    .btn-inverse:hover { background: transparent; color: #e6e3dd; }
     .btn-text-inv {
-      font-size: var(--t-label);
-      font-weight: 400;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(232,229,223,0.5);
-      border-bottom: 1px solid rgba(232,229,223,0.2);
-      padding-bottom: 2px;
+      font-size: var(--t-label); font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(230,227,221,0.5); border-bottom: 1px solid rgba(230,227,221,0.22); padding-bottom: 2px;
       transition: color 0.3s ease, border-color 0.3s ease;
     }
-    .btn-text-inv:hover { color: var(--off-white); border-color: var(--off-white); }
+    .btn-text-inv:hover { color: #e6e3dd; border-color: #e6e3dd; }
 
-    /* ─────────────────────────────────────────
+    /* ══════════════════════════════════════════
        FOOTER
-    ───────────────────────────────────────── */
+    ══════════════════════════════════════════ */
     footer {
-      background: var(--bg-deep);
+      background-color: var(--bg-deep);
+      background-image: var(--tex-fine);
+      background-size: 80px 80px;
+      transition: background-color 0.7s var(--ease-quart);
     }
     .foot-top {
-      max-width: var(--max-w);
-      margin: 0 auto;
+      max-width: var(--max-w); margin: 0 auto;
       padding: var(--s-xl) var(--gutter) var(--s-lg);
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: var(--s-xl);
-      border-bottom: 1px solid var(--rule);
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: var(--s-xl); border-bottom: 1px solid var(--rule);
     }
-    @media (max-width: 900px) {
-      .foot-top { grid-template-columns: 1fr 1fr; gap: var(--s-lg); }
-    }
-    @media (max-width: 540px) {
-      .foot-top { grid-template-columns: 1fr; }
-    }
-    .foot-brand-name {
-      font-family: var(--f-sans);
-      font-size: 0.78rem;
-      font-weight: 400;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--off-white);
-      margin-bottom: var(--s-md);
-    }
-    .foot-brand-tag {
-      font-size: var(--t-label);
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--dust);
-      margin-bottom: var(--s-sm);
-    }
-    .foot-brand-p {
-      font-size: 0.82rem;
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--dust);
-      max-width: 220px;
-    }
-    .foot-col-h {
-      font-size: var(--t-label);
-      font-weight: 400;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--off-white);
-      margin-bottom: var(--s-md);
-      padding-bottom: var(--s-sm);
-      border-bottom: 1px solid var(--rule);
-    }
-    .foot-link {
-      display: block;
-      font-size: var(--t-label);
-      font-weight: 400;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--dust);
-      padding: 0.4rem 0;
-      transition: color 0.25s ease;
-    }
-    .foot-link:hover { color: var(--off-white); }
-    .foot-bottom {
-      max-width: var(--max-w);
-      margin: 0 auto;
-      padding: 1.4rem var(--gutter);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--s-md);
-      flex-wrap: wrap;
-    }
-    .foot-copy {
-      font-size: var(--t-label);
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      color: var(--dust);
+    @media (max-width: 900px) { .foot-top { grid-template-columns: 1fr 1fr; gap: var(--s-lg); } }
+    @media (max-width: 540px) { .foot-top { grid-template-columns: 1fr; } }
+    .foot-brand-name { font-family: var(--f-sans); font-size: 0.78rem; font-weight: 400; letter-spacing: 0.38em; text-transform: uppercase; color: var(--off-white); margin-bottom: var(--s-md); }
+    .foot-brand-tag { font-size: var(--t-label); letter-spacing: 0.18em; text-transform: uppercase; color: var(--dust); margin-bottom: var(--s-sm); }
+    .foot-brand-p { font-size: 0.82rem; font-weight: 300; line-height: 1.75; color: var(--dust); max-width: 220px; }
+    .foot-col-h { font-size: var(--t-label); font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--off-white); margin-bottom: var(--s-md); padding-bottom: var(--s-sm); border-bottom: 1px solid var(--rule); }
+    .foot-link { display: block; font-size: var(--t-label); font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dust); padding: 0.4rem 0; transition: color 0.25s ease, padding-left 0.4s var(--ease-expo); }
+    .foot-link:hover { color: var(--off-white); padding-left: 0.4rem; }
+    .foot-bottom { max-width: var(--max-w); margin: 0 auto; padding: 1.4rem var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: var(--s-md); flex-wrap: wrap; }
+    .foot-copy { font-size: var(--t-label); font-weight: 400; letter-spacing: 0.14em; color: var(--dust); transition: color 0.25s ease; }
+    a.foot-copy:hover { color: var(--off-white); }
+
+    /* ══════════════════════════════════════════
+       NOISE CANVAS — replaces hero grid
+    ══════════════════════════════════════════ */
+    .noise-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      /* imageRendering set inline */
+      opacity: 1;
+      mix-blend-mode: soft-light;
     }
 
-    /* ─────────────────────────────────────────
-       CUSTOM MODAL
-    ───────────────────────────────────────── */
-    .modal-overlay {
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(26, 28, 27, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      z-index: 1000;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none; 
-      transition: opacity 0.4s ease;
+    /* ══════════════════════════════════════════
+       INITIAL HIDDEN STATES for GSAP
+       Only hero line-masks need pre-hiding.
+       Scroll elements are set invisible by GSAP
+       at runtime via fromTo(), not by CSS.
+    ══════════════════════════════════════════ */
+    .line-inner { opacity: 0; transform: translateY(110%); }
+
+    /* ══════════════════════════════════════════
+       REDUCED MOTION
+    ══════════════════════════════════════════ */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .line-inner, .g-fade, .g-fade-x { opacity: 1 !important; transform: none !important; }
+      .hero-ring { animation: none !important; }
     }
-    .modal-overlay.active { opacity: 1; pointer-events: auto; }
-    
-    .modal-box {
-      background: var(--bg-deep);
-      border: 1px solid var(--rule);
-      padding: var(--s-md) var(--gutter);
-      max-width: 420px; width: 90%;
-      text-align: center;
-      transform: translateY(20px); 
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .modal-overlay.active .modal-box { transform: translateY(0); }
-    
-    .modal-title { 
-      font-family: var(--f-serif); 
-      font-size: 2rem; 
-      color: var(--off-white); 
-      margin-bottom: 1rem; 
-      letter-spacing: 0.02em;
-    }
-    .modal-close { margin-top: 1.5rem; cursor: pointer; }
   </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════
-     NAV
-══════════════════════════════════ -->
-<nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+<div class="progress-bar" aria-hidden="true"><div class="progress-fill" id="pFill"></div></div>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="mainNav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="/" class="nav-logo" aria-label="HEIST home">Heist</a>
     <ul class="nav-links">
       <li><a href="https://discover.heistfashion.tech" class="nav-link">Discovery</a></li>
       <li><a href="https://tokyo.heistfashion.tech" class="nav-link">Tokyo</a></li>
-      <li><a href="#" onclick="showModal(event, 'The Fashion Thesis is launching soon. Stay tuned.')" class="nav-link">Fashion Thesis</a></li>
+      <li><a href="https://report.heistfashion.tech" class="nav-link">Fashion Thesis</a></li>
     </ul>
-    <a href="#products" class="nav-cta" onclick="document.querySelector('.prod-section').scrollIntoView({behavior: 'smooth'})">Discover Heist</a>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle light/dark mode">
+        <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <a href="https://discover.heistfashion.tech" class="nav-cta">Discover Heist.</a>
+    </div>
   </div>
 </nav>
 
-<!-- ══════════════════════════════════
-     HERO
-══════════════════════════════════ -->
+<!-- ══ HERO ══ -->
 <section class="hero" aria-label="Hero">
-  <div class="hero-body">
+  <div class="hero-ambience" aria-hidden="true">
+    <!-- Noise grain canvas — React Bits Noise component, ported to vanilla -->
+    <canvas id="noiseCanvas" class="noise-canvas" style="image-rendering:pixelated" aria-hidden="true"></canvas>
+    <!-- Ambient rings kept for depth -->
+    <div class="hero-ring ring-a"></div>
+    <div class="hero-ring ring-b"></div>
+    <div class="hero-ring ring-c"></div>
+  </div>
 
+  <div class="hero-body">
     <div class="hero-left">
-      <div class="hero-index hero-enter he-1">
-        <div class="hero-index-line"></div>
+      <div class="hero-index g-fade" id="heroLabel">
+        <div class="hero-index-line" id="heroLine"></div>
         <span class="label">Style Intelligence</span>
       </div>
 
-      <h1>
-        <div class="hero-display hero-enter he-2">Find</div>
-        <div class="hero-display hero-enter he-3" style="color: var(--stone); font-style: italic;">Your</div>
-        <div class="hero-display hero-enter he-4">DNA.</div>
+      <h1 aria-label="Find Your DNA.">
+        <span class="line-mask"><span class="line-inner hero-display" id="hl1">Find</span></span>
+        <span class="line-mask"><span class="line-inner hero-display italic" id="hl2">Your</span></span>
+        <span class="line-mask"><span class="line-inner hero-display" id="hl3">DNA.</span></span>
       </h1>
 
-      <div class="hero-sub-block hero-enter he-5">
-        <p class="body-txt">
-          HEIST decodes your exact style DNA — body geometry, skin undertone, lifestyle — and maps it to outfits that work. Built for everyone confident enough to dress well and refuses mediocrity.
-        </p>
+      <div class="hero-sub-block g-fade" id="heroBio">
+        <p class="body-txt">HEIST decodes your exact style DNA — body geometry, skin undertone, lifestyle — and maps it to outfits that work. Built for everyone confident enough to dress well and refuses mediocrity.</p>
       </div>
 
-      <div class="hero-cta-row hero-enter he-6">
-        <button onclick="document.querySelector('.prod-section').scrollIntoView({behavior: 'smooth'})" class="btn-solid" style="cursor: pointer;">
+      <div class="hero-cta-row g-fade" id="heroCtaRow">
+        <a href="https://discovery.heistfashion.tech" class="btn-solid">
           Begin
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </button>
-        <a href="https://tokyo.heistfashion.tech" class="btn-text">
-          Explore Tokyo
         </a>
+        <a href="https://tokyo.ehistfashion.tech" class="btn-text">Explore Tokyo</a>
       </div>
     </div>
 
-    <div class="hero-right hero-enter he-5">
+    <div class="hero-right g-fade" id="heroStats">
       <div class="hero-stat-list" role="list" aria-label="Platform statistics">
         <div class="hero-stat" role="listitem">
           <div class="hero-stat-num">03</div>
@@ -1039,229 +713,160 @@
         </div>
       </div>
     </div>
-
   </div>
 
-  <div class="hero-bottom" aria-hidden="true">
+  <div class="hero-bottom g-fade" id="heroBottom" aria-hidden="true">
     <div class="hero-bottom-tags">
       <span class="label">AI Vision</span>
-      <span class="label" style="color: var(--rule-light);">—</span>
+      <span class="label" style="color:var(--rule-light)">—</span>
       <span class="label">Outfit Formulas</span>
-      <span class="label" style="color: var(--rule-light);">—</span>
-      <span class="label">Global Menswear & Womenswear</span>
+      <span class="label" style="color:var(--rule-light)">—</span>
+      <span class="label">Global Discovery</span>
     </div>
     <span class="label">2026</span>
   </div>
+
+
 </section>
 
-<!-- ══════════════════════════════════
-     PRODUCTS
-══════════════════════════════════ -->
-<section class="prod-section" aria-labelledby="prod-heading" id="products">
-
-  <!-- Section header -->
+<!-- ══ PRODUCTS ══ -->
+<section class="prod-section" aria-labelledby="prod-heading">
   <div class="sec-header">
     <div>
-      <div class="sec-header-num label sr">01 / 03</div>
-      <h2 id="prod-heading" class="h2 sr sd-1">The<br>Arsenal</h2>
+      <div class="sec-header-num label g-fade">01 / 03</div>
+      <h2 id="prod-heading" class="h2 g-fade">The<br>Arsenal</h2>
     </div>
-    <div class="sr sd-2">
-      <p class="body-txt" style="max-width: 360px;">
-        Three specialised tools. Each solves one part of the style problem with precision. Together, they give you complete control over how you present.
-      </p>
+    <div class="g-fade">
+      <p class="body-txt" style="max-width:360px">Three specialised tools. Each solves one part of the style problem with precision. Together, they give you complete control over how you present.</p>
     </div>
   </div>
 
-  <!-- Cards grid -->
   <div class="prod-grid" role="list">
-
-    <!-- Card 01: Heist Discovery — featured -->
-    <a href="https://discover.heistfashion.tech"
-       class="pcard feat sr"
+    <!-- Card 01 — Discovery -->
+    <a href="https://discovery.heistfashion.tech"
+       class="pcard feat g-fade"
        role="listitem"
-       aria-label="Heist Discovery — A vibe-based fashion items discovery platform">
+       aria-label="Heist Discovery — Global vibe-based fashion discovery">
       <div class="pcard-bg-num" aria-hidden="true">01</div>
-
       <div class="pcard-index">
         <span class="pcard-num label">01</span>
         <div class="pcard-icon" aria-hidden="true">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
         </div>
       </div>
-
       <div>
-        <div class="pcard-tag">Discovery Engine</div>
+        <div class="pcard-tag">Vision Engine</div>
         <h3 class="pcard-name">Heist<br><em>Discovery</em></h3>
-        <p class="pcard-desc">
-          A vibe-based fashion item discovery platform. Whether you are looking for international Grails or want to discover high-quality, homegrown underground brands in India, we give you a curated list of items based on your aesthetic.
-        </p>
-
-        <a class="pcard-link" href="https://discover.heistfashion.tech" tabindex="-1" aria-hidden="true">
-          Start Discovering
-          <span class="pcard-link-arrow">→</span>
-        </a>
+        <p class="pcard-desc">A global vibe-based fashion discovery platform. If you're from India, uncover the best homegrown and underground brands boasting unmatched quality. Curated exactly to your aesthetic.</p>
+        <span class="pcard-link" aria-hidden="true">Start Discovery <span>→</span></span>
       </div>
     </a>
 
-    <!-- Right column: two stacked cards -->
-    <div style="display: flex; flex-direction: column;">
-
-      <!-- Card 02: Tokyo -->
-      <a href="https://tokyo.heistfashion.tech"
-         class="pcard no-right sr sd-1"
+    <div style="display:flex;flex-direction:column">
+      <!-- Card 02 — Tokyo -->
+      <a href="https://tokyo.ehistfashion.tech"
+         class="pcard no-right g-fade"
          role="listitem"
-         aria-label="Tokyo AI Stylist — Your personal AI wingman for real-time style advice">
+         aria-label="Tokyo — AI style wingman chatbot">
         <div class="pcard-bg-num" aria-hidden="true">02</div>
-
         <div class="pcard-index">
           <span class="pcard-num label">02</span>
           <div class="pcard-icon" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
           </div>
         </div>
-
         <div class="pcard-tag">AI Stylist</div>
         <h3 class="pcard-name"><em>Tokyo</em></h3>
-        <p class="pcard-desc">
-          Your personal style wingman. Sharp, no-BS outfit advice tuned to your exact DNA — budget, occasion, and the market.
-        </p>
-        <a class="pcard-link" href="https://tokyo.heistfashion.tech" tabindex="-1" aria-hidden="true">
-          Talk to Tokyo
-          <span class="pcard-link-arrow">→</span>
-        </a>
+        <p class="pcard-desc">Your personal style wingman. Sharp, no-BS outfit advice tuned to your exact DNA — budget, occasion, and your local market.</p>
+        <span class="pcard-link" aria-hidden="true">Talk to Tokyo <span>→</span></span>
       </a>
 
-      <!-- Card 03: Fashion Thesis -->
-      <a href="#" onclick="showModal(event, 'The Fashion Thesis is currently under development. Check back soon for the official launch.')"
-         class="pcard no-right sr sd-2"
+      <!-- Card 03 — Fashion Thesis -->
+      <a href="https://report.heistfashion.tech"
+         class="pcard no-right g-fade"
          role="listitem"
-         aria-label="The Fashion Thesis — Your complete stylist-grade style intelligence report">
+         aria-label="The Fashion Thesis — Stylist-grade style intelligence report">
         <div class="pcard-bg-num" aria-hidden="true">03</div>
-
         <div class="pcard-index">
           <span class="pcard-num label">03</span>
           <div class="pcard-icon" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
           </div>
         </div>
-
         <div class="pcard-tag">Deep Intel</div>
         <h3 class="pcard-name">The Fashion<br><em>Thesis</em></h3>
-        <p class="pcard-desc">
-          A stylist-grade report created by state-of-the-art AI agents and approved by professional human stylists. Get exactly what a stylist would give to onboard a client at a fraction of the price, and feed this report to Tokyo for maximum personalization.
-        </p>
-        <div class="pcard-link" tabindex="-1" aria-hidden="true">
-          Coming Soon
-          <span class="pcard-link-arrow">→</span>
-        </div>
+        <p class="pcard-desc">A stylist-grade report engineered by state-of-the-art AI and verified by professional human stylists. Get a comprehensive PDF at a fraction of a stylist's cost.</p>
+        <span class="pcard-link" aria-hidden="true">Get Your Thesis <span>→</span></span>
       </a>
-
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     MANIFESTO
-══════════════════════════════════ -->
+<!-- ══ MANIFESTO ══ -->
 <section class="manifesto" aria-label="Brand manifesto">
   <div class="manifesto-inner">
-    <div class="manifesto-label-col sr">
+    <div class="manifesto-label-col g-fade">
       <span class="label-teal">Manifesto</span>
       <div class="manifesto-rule"></div>
-      <p class="body-txt">On identity.<br>On precision.<br>On refusing to settle.</p>
+      <p class="body-txt">On curation.<br>On refusing mediocrity.<br>On never looking chopped.</p>
     </div>
     <div>
-      <h2 class="manifesto-headline sr sd-1">
-        Fashion isn't copied.<br>
-        It's <em>curated.</em>
+      <h2 class="manifesto-headline" id="manifHeadline">
+        Fashion isn't<br>copied.<br>It's<br><em>curated.</em>
       </h2>
-      <div class="manifesto-body sr sd-2">
-        <p class="body-txt">
-          Most men and women dress by accident. They buy what the algorithm surfaces, what the influencer wore, what was on sale. The result? Looking chopped.
-        </p>
-        <p class="body-txt">
-          HEIST is the correction. We give you an intelligence layer to build your wardrobe intentionally. Know your geometry. Own your palette. Refuse mediocrity.
-        </p>
+      <div class="manifesto-body g-fade" id="manifBody">
+        <p class="body-txt">HEIST is not a store. Not a trend feed. It's an intelligence layer — built for men and women who refuse mediocrity and are tired of looking chopped.</p>
+        <p class="body-txt">Most people dress by accident. They buy what the algorithm surfaces, what the influencer wore, what was on sale. HEIST is the correction. Know your geometry. Own your palette. Build with intention.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     HOW IT WORKS
-══════════════════════════════════ -->
+<!-- ══ PROCESS ══ -->
 <section class="process-section" aria-labelledby="process-heading">
-
   <div class="sec-header">
     <div>
-      <div class="sec-header-num label sr">02 / 03</div>
-      <h2 id="process-heading" class="h2 sr sd-1">The<br>Process</h2>
+      <div class="sec-header-num label g-fade">02 / 03</div>
+      <h2 id="process-heading" class="h2 g-fade">The<br>Process</h2>
     </div>
-    <div class="sr sd-2">
-      <p class="body-txt" style="max-width: 360px;">
-        Three steps. Under three minutes. A complete picture of your style identity, with a clear path forward.
-      </p>
+    <div class="g-fade">
+      <p class="body-txt" style="max-width:360px">Three steps. Under three minutes. A complete picture of your style identity, with a clear path forward.</p>
     </div>
   </div>
-
   <div class="process-list" role="list">
-
-    <div class="process-item sr" role="listitem">
+    <div class="process-item g-fade-x" role="listitem">
       <div class="proc-num">01</div>
-      <div>
-        <h3 class="proc-title">Run Your Diagnostic</h3>
-      </div>
-      <div class="process-item-desc">
-        <p class="proc-desc">Upload a photo or complete 10 precision questions. The AI maps body type, undertone, silhouette preferences, and lifestyle in under two minutes.</p>
-      </div>
+      <div><h3 class="proc-title">Run Heist Discovery</h3></div>
+      <div class="process-item-desc"><p class="proc-desc">Upload a photo or complete 10 precision questions. The AI maps body type, undertone, silhouette preferences, and lifestyle in under two minutes.</p></div>
     </div>
-
-    <div class="process-item sr sd-1" role="listitem">
+    <div class="process-item g-fade-x" role="listitem">
       <div class="proc-num">02</div>
-      <div>
-        <h3 class="proc-title">Receive Your Style DNA</h3>
-      </div>
-      <div class="process-item-desc">
-        <p class="proc-desc">A detailed breakdown of your aesthetic archetype, ideal colour palette, key silhouettes, and brand alignment scores across the market.</p>
-      </div>
+      <div><h3 class="proc-title">Receive Your Style DNA</h3></div>
+      <div class="process-item-desc"><p class="proc-desc">A detailed breakdown of your aesthetic archetype, ideal colour palette, key silhouettes, and brand alignment scores across the market.</p></div>
     </div>
-
-    <div class="process-item sr sd-2" role="listitem">
+    <div class="process-item g-fade-x" role="listitem">
       <div class="proc-num">03</div>
-      <div>
-        <h3 class="proc-title">Build Your Arsenal</h3>
-      </div>
-      <div class="process-item-desc">
-        <p class="proc-desc">Use Tokyo for real-time advice, or commission a full Fashion Thesis — built around your exact DNA, delivered as a clean, downloadable report.</p>
-      </div>
+      <div><h3 class="proc-title">Build Your Arsenal</h3></div>
+      <div class="process-item-desc"><p class="proc-desc">Use Tokyo for real-time advice, or commission a full Fashion Thesis — a comprehensive style report built around your exact DNA, delivered as a clean PDF.</p></div>
     </div>
-
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     CTA BAND
-══════════════════════════════════ -->
+<!-- ══ CTA BAND ══ -->
 <section class="cta-band" aria-label="Call to action">
   <div class="cta-inner">
-    <div class="sr">
-      <h2 class="cta-headline">
-        Know<br>
-        Your<br>
-        <em>DNA.</em>
-      </h2>
+    <div class="g-fade" id="ctaHeadWrap">
+      <h2 class="cta-headline">Know<br>Your<br><em>DNA.</em></h2>
       <p class="cta-sub">Stop guessing. Start building a wardrobe that makes sense for your exact face, body, and life.</p>
     </div>
-    <div class="cta-action sr sd-2">
-      <a href="https://discover.heistfashion.tech" class="btn-inverse">Start Discovering</a>
-      <a href="#" onclick="showModal(event, 'The Fashion Thesis is launching soon. Stay tuned.')" class="btn-text-inv">View Thesis Plans</a>
+    <div class="cta-action g-fade" id="ctaActions">
+      <a href="https://discovery.heistfashion.tech" class="btn-inverse">Start Discovery</a>
+      <a href="https://report.heistfashion.tech" class="btn-text-inv">View Fashion Thesis</a>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════
-     FOOTER
-══════════════════════════════════ -->
+<!-- ══ FOOTER ══ -->
 <footer>
   <div class="foot-top">
     <div>
@@ -1271,9 +876,9 @@
     </div>
     <div>
       <div class="foot-col-h">Tools</div>
-      <a href="https://discover.heistfashion.tech" class="foot-link">Discovery Engine</a>
+      <a href="https://discover.heistfashion.tech" class="foot-link">Heist Discovery</a>
       <a href="https://tokyo.heistfashion.tech" class="foot-link">Tokyo — AI Stylist</a>
-      <a href="#" onclick="showModal(event, 'The Fashion Thesis is launching soon. Stay tuned.')" class="foot-link">The Fashion Thesis</a>
+      <a href="https://report.heistfashion.tech" class="foot-link">Fashion Thesis</a>
     </div>
     <div>
       <div class="foot-col-h">Follow</div>
@@ -1282,73 +887,405 @@
   </div>
   <div class="foot-bottom">
     <div class="foot-copy">© 2026 Heist. All rights reserved.</div>
-    <div style="display: flex; gap: 2rem;">
-      <a href="/privacy" class="foot-copy" style="cursor: pointer;">Privacy</a>
-      <a href="/terms.html" class="foot-copy" style="cursor: pointer;">Terms</a>
+    <div style="display:flex;gap:2rem">
+      <a href="/privacy" class="foot-copy">Privacy</a>
+        <a href="terms.html" class="foot-copy">Terms &amp; Conditions</a>
+<!-- ══════════════════════════════════════════════════════
+     TERMS & CONDITIONS MODAL
+══════════════════════════════════════════════════════ -->
+<div id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsTitle" style="display:none;position:fixed;inset:0;z-index:900;overflow-y:auto;">
+  <!-- Backdrop -->
+  <div id="termsBackdrop" style="position:fixed;inset:0;background:rgba(12,14,13,0.88);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);"></div>
+
+  <!-- Panel -->
+  <div id="termsPanel" style="
+    position:relative;z-index:901;
+    max-width:760px;margin:3rem auto;
+    background:var(--bg-deep);
+    background-image:var(--tex-fine);
+    background-size:80px 80px;
+    border:1px solid var(--rule-light);
+    padding:clamp(2rem,5vw,4rem);
+    font-family:'DM Sans',system-ui,sans-serif;
+    font-weight:300;
+    color:var(--off-white);
+  ">
+    <!-- Close -->
+    <button id="termsClose" aria-label="Close Terms and Conditions" style="
+      position:absolute;top:1.4rem;right:1.4rem;
+      background:none;border:1px solid var(--rule-light);
+      color:var(--dust);cursor:pointer;
+      width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+      transition:border-color .25s,color .25s;
+    " onmouseenter="this.style.borderColor='var(--teal-pale)';this.style.color='var(--off-white)'"
+       onmouseleave="this.style.borderColor='var(--rule-light)';this.style.color='var(--dust)'">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <!-- Header -->
+    <div style="margin-bottom:2.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--rule);">
+      <p style="font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--teal-pale);margin-bottom:0.8rem;">Legal</p>
+      <h2 id="termsTitle" style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:300;line-height:1;letter-spacing:0.02em;color:var(--off-white);margin-bottom:0.6rem;">Terms &amp;<br>Conditions</h2>
+      <p style="font-size:0.72rem;letter-spacing:0.1em;color:var(--dust);">Last updated: June 2026 &nbsp;·&nbsp; Effective immediately upon use</p>
+    </div>
+
+    <!-- Body -->
+    <div style="display:flex;flex-direction:column;gap:2.2rem;font-size:0.88rem;line-height:1.85;color:var(--stone);">
+
+      <!-- Preamble -->
+      <p>By accessing or using any product under the <strong style="color:var(--off-white);font-weight:400">HEIST</strong> platform — including Heist Discovery, Tokyo AI Stylist, or the Fashion Thesis — you agree to be bound by these Terms and Conditions in full. If you do not agree, you must cease use immediately.</p>
+
+      <!-- 1. The Service & AI Disclaimer -->
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:400;letter-spacing:0.04em;color:var(--off-white);margin-bottom:0.6rem;padding-bottom:0.5rem;border-bottom:1px solid var(--rule);">1. The Service &amp; AI Disclaimer</h3>
+        <p style="margin-bottom:0.9rem;"><strong style="color:var(--off-white);font-weight:400">Algorithmic Nature.</strong> The HEIST platform utilises artificial intelligence to map geometric markers, structural silhouettes, and skin-tone vectors in order to generate style recommendations. Style is inherently subjective. Our engine operates on a probabilistic mathematical framework and processes statistical correlations — not universal aesthetic truths. We make no guarantee of user satisfaction with any aesthetic output produced by the system.</p>
+        <p><strong style="color:var(--off-white);font-weight:400">No Professional Liability.</strong> The Tokyo AI Stylist chatbot, Heist Discovery curation engine, and Fashion Thesis reports function solely as digital advisory tools. HEIST, its founders, employees, contractors, and affiliates accept zero liability for any impact — social, romantic, professional, reputational, or financial — arising from wardrobe choices suggested by the platform. You use these recommendations at your own discretion and risk.</p>
+      </div>
+
+      <!-- 2. Data Ingestion & Physical Privacy -->
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:400;letter-spacing:0.04em;color:var(--off-white);margin-bottom:0.6rem;padding-bottom:0.5rem;border-bottom:1px solid var(--rule);">2. Data Ingestion &amp; Physical Privacy</h3>
+        <p style="margin-bottom:0.9rem;"><strong style="color:var(--off-white);font-weight:400">Image Processing.</strong> When you upload a photograph, that image is processed exclusively to extract physical trait markers — including but not limited to: face shape classification, structural geometry (lean or rounded body type), skin undertone, and silhouette proportions. Images are processed via a multimodal vision model and are not used for any other purpose. We do not sell or license your biometric data to third parties.</p>
+        <p style="margin-bottom:0.9rem;"><strong style="color:var(--off-white);font-weight:400">Persistent Memory Consent.</strong> By using any HEIST service, you explicitly consent to your calculated Style DNA profile — including geometry classifications, archetype mappings, and palette assignments — being stored persistently in our database to enable continuity of service across sessions.</p>
+        <p><strong style="color:var(--off-white);font-weight:400">Event &amp; Context Logging.</strong> Temporal data you provide to the AI — including dates, occasions, events, locations, or social contexts — may be logged to enable proactive and contextually relevant styling suggestions. By using the service, you acknowledge and consent to this logging.</p>
+      </div>
+
+      <!-- 3. Payments, Billing & Subscriptions -->
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:400;letter-spacing:0.04em;color:var(--off-white);margin-bottom:0.6rem;padding-bottom:0.5rem;border-bottom:1px solid var(--rule);">3. Payments, Billing &amp; Subscriptions</h3>
+        <p style="margin-bottom:0.9rem;"><strong style="color:var(--off-white);font-weight:400">Trial Limit.</strong> The Tokyo AI Stylist offers a strictly limited trial of 10 conversational messages. Upon exhaustion of the trial allowance, access is locked and a subscription is required to continue. This limit is non-negotiable and cannot be extended.</p>
+        <p style="margin-bottom:0.9rem;"><strong style="color:var(--off-white);font-weight:400">Recurring Subscription.</strong> The Tokyo AI Stylist subscription is billed at ₹400 INR per billing cycle and renews automatically unless cancelled before the renewal date. Cancellation must be actioned by the user prior to the next billing date to avoid the subsequent charge. HEIST is not responsible for charges incurred due to failure to cancel in time.</p>
+        <p style="margin-bottom:0.9rem;"><strong style="color:var(--off-white);font-weight:400">Fashion Thesis Reports.</strong> Purchase of a Fashion Thesis report constitutes a one-time, upfront transaction priced at ₹1,999–₹2,999 INR (domestic) or $39–$49 USD (international). There are no instalment plans. The transaction is complete at the point of payment confirmation.</p>
+        <p><strong style="color:var(--off-white);font-weight:400">Zero Refund Policy.</strong> Because the Fashion Thesis is an immediately delivered, computationally generated digital diagnostic report, all sales are final. No refunds will be issued for any reason, including but not limited to: user dissatisfaction with aesthetic output, change of mind, or failure to read the product description prior to purchase. This policy is absolute.</p>
+      </div>
+
+      <!-- 4. Affiliate Link Disclosure -->
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:400;letter-spacing:0.04em;color:var(--off-white);margin-bottom:0.6rem;padding-bottom:0.5rem;border-bottom:1px solid var(--rule);">4. Affiliate Link Disclosure</h3>
+        <p>HEIST participates in affiliate marketing programmes. The platform's curation engine may surface direct retail links for recommended apparel from third-party brands. If you click on a curated product link and complete a purchase, HEIST may receive a commission from the retailer. This commission comes at no additional cost to you. The presence of affiliate links does not influence our AI's recommendations — curation is driven solely by style-vector alignment with your DNA profile.</p>
+      </div>
+
+      <!-- 5. Governing Law & Jurisdiction -->
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:400;letter-spacing:0.04em;color:var(--off-white);margin-bottom:0.6rem;padding-bottom:0.5rem;border-bottom:1px solid var(--rule);">5. Governing Law &amp; Jurisdiction</h3>
+        <p style="margin-bottom:0.9rem;"><strong style="color:var(--off-white);font-weight:400">Local Authority.</strong> These Terms and Conditions are governed by and construed in accordance with the laws of India. Any disputes, chargeback conflicts, or platform governance matters shall be subject exclusively to the jurisdiction of the competent courts located in Hyderabad, Telangana, India.</p>
+        <p><strong style="color:var(--off-white);font-weight:400">Binding Arbitration.</strong> Prior to initiating any formal legal proceedings, both parties agree to attempt resolution of any dispute through good-faith arbitration conducted in Hyderabad, Telangana. Should arbitration fail to produce a resolution within 60 days, either party may then escalate to the competent courts of jurisdiction specified above.</p>
+      </div>
+
+      <!-- 6. Modifications -->
+      <div>
+        <h3 style="font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-weight:400;letter-spacing:0.04em;color:var(--off-white);margin-bottom:0.6rem;padding-bottom:0.5rem;border-bottom:1px solid var(--rule);">6. Modifications to These Terms</h3>
+        <p>HEIST reserves the right to amend these Terms at any time. Continued use of any HEIST product following an update to these Terms constitutes acceptance of the revised document. It is your responsibility to review these Terms periodically.</p>
+      </div>
+
+      <!-- Acceptance -->
+      <div style="border-top:1px solid var(--rule);padding-top:1.5rem;margin-top:0.5rem;">
+        <p style="font-size:0.8rem;color:var(--dust);line-height:1.75;">By using HEIST, you confirm that you are at least 18 years of age, have read and understood these Terms, and agree to be bound by them. For queries, contact us via Instagram: <a href="https://www.instagram.com/heistfashion.tech/" target="_blank" rel="noopener" style="color:var(--teal-pale);border-bottom:1px solid var(--teal-border);">@heistfashion.tech</a></p>
+      </div>
+
     </div>
   </div>
-</footer>
-
-<!-- ══════════════════════════════════
-     CUSTOM MODAL UI
-══════════════════════════════════ -->
-<div id="msg-modal" class="modal-overlay" aria-hidden="true">
-  <div class="modal-box">
-    <div class="modal-title">Coming Soon</div>
-    <p class="body-txt" id="msg-content">This feature is currently under development.</p>
-    <button class="btn-solid modal-close" onclick="closeModal()">Understood</button>
-  </div>
 </div>
 
 <!-- ══════════════════════════════════
-     COOKIE CONSENT UI
+     GSAP ANIMATION MASTER
 ══════════════════════════════════ -->
-<div id="cookie-consent" style="position: fixed; bottom: 0; left: 0; right: 0; background: var(--bg-deep); border-top: 1px solid var(--rule); padding: 1.2rem var(--gutter); display: flex; justify-content: space-between; align-items: center; z-index: 999; transform: translateY(100%); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
-  <p class="body-txt" style="margin: 0; font-size: 0.85rem; max-width: 600px;">
-    We use cookies to refine your intelligence layer and improve site performance. By continuing, you agree to our <a href="/privacy" style="text-decoration: underline; color: var(--off-white);">Privacy Policy</a>.
-  </p>
-  <button id="accept-cookies" class="btn-solid" style="padding: 0.6rem 1.5rem; font-size: 0.7rem;">Accept</button>
-</div>
-
 <script>
-  // ── Scroll reveal
-  const els = document.querySelectorAll('.sr, .sr-fade');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
-  els.forEach(el => io.observe(el));
+gsap.registerPlugin(ScrollTrigger);
 
-  // ── Cookie Consent Logic
-  const cookieBanner = document.getElementById('cookie-consent');
-  if (!localStorage.getItem('heist_cookies_accepted')) {
-    setTimeout(() => { cookieBanner.style.transform = 'translateY(0)'; }, 1500);
-  }
-  document.getElementById('accept-cookies').addEventListener('click', () => {
-    localStorage.setItem('heist_cookies_accepted', 'true');
-    cookieBanner.style.transform = 'translateY(100%)';
+/* ── SCROLL PROGRESS ── */
+ScrollTrigger.create({
+  start: 'top top', end: 'bottom bottom',
+  onUpdate: s => document.getElementById('pFill').style.width = (s.progress * 100) + '%'
+});
+
+/* ── NAV HIDE/SHOW ── */
+(function() {
+  let last = 0;
+  const nav = document.getElementById('mainNav');
+  ScrollTrigger.create({
+    start: 0, end: 'max',
+    onUpdate: s => {
+      const y = s.scroll();
+      if (y > 120) {
+        if (y > last + 6) nav.classList.add('hidden');
+        else if (y < last - 6) nav.classList.remove('hidden');
+      } else nav.classList.remove('hidden');
+      last = y;
+    }
   });
+})();
 
-  // ── Modal Logic
-  function showModal(e, text) {
-    if (e) e.preventDefault();
-    document.getElementById('msg-content').innerText = text || 'Coming Soon!';
-    document.getElementById('msg-modal').classList.add('active');
-  }
-  function closeModal() {
-    document.getElementById('msg-modal').classList.remove('active');
-  }
+/* ── HERO ENTRANCE: ORCHESTRATED TIMELINE ── */
+(function() {
+  const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
-  // ── Service Worker Registration
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js').catch(err => {
-        console.warn('Service Worker registration failed: ', err);
-      });
+  /* 1. Rings fade + scale in from slightly larger */
+  tl.fromTo('.hero-ring',
+    { scale: 1.18, opacity: 0 },
+    { scale: 1, opacity: 1, duration: 2.2, stagger: 0.3, ease: 'power3.out' },
+  0.1);
+
+  /* 2. Label line draws out */
+  tl.to('#heroLine', { width: 28, duration: 0.9, ease: 'power3.out' }, 0.5);
+  tl.to('#heroLabel', { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, 0.5);
+
+  /* 3. Headline lines rise from mask — large travel, very visible */
+  tl.to('#hl1', { y: '0%', opacity: 1, duration: 1.4, ease: 'power4.out' }, 0.55);
+  tl.to('#hl2', { y: '0%', opacity: 1, duration: 1.4, ease: 'power4.out' }, 0.72);
+  tl.to('#hl3', { y: '0%', opacity: 1, duration: 1.4, ease: 'power4.out' }, 0.89);
+
+  /* 4. Right stats slide in from right */
+  tl.fromTo('#heroStats',
+    { x: 60, opacity: 0 },
+    { x: 0, opacity: 1, duration: 1.3, ease: 'power3.out' },
+  0.85);
+
+  /* 5. Body copy, CTA, bottom bar */
+  tl.to(['#heroBio', '#heroCtaRow', '#heroBottom'], {
+    y: 0, opacity: 1, duration: 1.1, stagger: 0.15, ease: 'power3.out'
+  }, 1.0);
+
+})();
+
+/* ── RINGS: PARALLAX + ROTATION ── */
+(function() {
+  const rings = ['.ring-a', '.ring-b', '.ring-c'];
+  const speeds = [0.14, 0.22, 0.09];
+  const rotSpeeds = [70, 100, 55];
+
+  rings.forEach((sel, i) => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+
+    /* Continuous slow rotation */
+    gsap.to(el, {
+      rotation: 360, duration: rotSpeeds[i],
+      repeat: -1, ease: 'none'
     });
-  }
-</script>
 
+    /* Parallax on scroll */
+    gsap.to(el, {
+      y: () => window.innerHeight * speeds[i],
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 1.5
+      }
+    });
+  });
+})();
+
+/* ── THEME TOGGLE ── */
+(function() {
+  const btn = document.getElementById('themeBtn');
+  const html = document.documentElement;
+  const saved = localStorage.getItem('heist-theme');
+  if (saved) html.setAttribute('data-theme', saved);
+
+  btn.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('heist-theme', next);
+    gsap.fromTo(btn, { rotate: 0 }, { rotate: 200, duration: 0.6, ease: 'power3.out', clearProps: 'rotate' });
+    gsap.fromTo('body', { opacity: 0.85 }, { opacity: 1, duration: 0.5, ease: 'power2.out' });
+  });
+})();
+
+/* ── MAGNETIC BUTTONS ── */
+(function() {
+  document.querySelectorAll('.btn-solid, .btn-inverse').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const dx = (e.clientX - r.left - r.width / 2) * 0.18;
+      const dy = (e.clientY - r.top - r.height / 2) * 0.18;
+      gsap.to(btn, { x: dx, y: dy, duration: 0.4, ease: 'power2.out' });
+    });
+    btn.addEventListener('mouseleave', () => {
+      gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.5)' });
+    });
+  });
+})();
+
+/* ── SCRUB: hero headline drifts on scroll ── */
+(function() {
+  gsap.to(['#hl1','#hl2','#hl3'], {
+    y: '-12%', stagger: 0.08, ease: 'none',
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 2 }
+  });
+})();
+
+/* ── PROCESS NUMBER SCALE on enter ── */
+(function() {
+  document.querySelectorAll('.proc-num').forEach((el, i) => {
+    gsap.fromTo(el,
+      { scale: 0.5, opacity: 0 },
+      {
+        scale: 1, opacity: 1, duration: 0.9, ease: 'back.out(1.4)',
+        delay: i * 0.12,
+        scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+      }
+    );
+  });
+})();
+
+
+/* ══════════════════════════════════════════════════════════
+   NOISE CANVAS — animated film grain over the hero
+   Faithful port of React Bits Noise component to vanilla JS.
+   patternRefreshInterval=2, patternAlpha=18 dark / 22 light
+══════════════════════════════════════════════════════════ */
+(function() {
+  const canvas = document.getElementById('noiseCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d', { alpha: true });
+  if (!ctx) return;
+  const SIZE = 1024, INTERVAL = 2;
+  let frame = 0, raf;
+  function resize() {
+    canvas.width = SIZE; canvas.height = SIZE;
+    canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;';
+  }
+  function drawGrain() {
+    const a = document.documentElement.getAttribute('data-theme') === 'light' ? 22 : 18;
+    const img = ctx.createImageData(SIZE, SIZE);
+    const d = img.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const v = Math.random() * 255;
+      d[i] = d[i+1] = d[i+2] = v; d[i+3] = a;
+    }
+    ctx.putImageData(img, 0, 0);
+  }
+  function loop() {
+    if (frame % INTERVAL === 0) drawGrain();
+    frame++;
+    raf = requestAnimationFrame(loop);
+  }
+  resize();
+  loop();
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) cancelAnimationFrame(raf);
+    else { frame = 0; loop(); }
+  });
+})();
+
+
+/* ══════════════════════════════════════════════════════════
+   MANIFESTO WORD SPLIT — must run before unified system
+   so .word-inner elements exist when GSAP targets them
+══════════════════════════════════════════════════════════ */
+(function() {
+  const el = document.getElementById('manifHeadline');
+  if (!el) return;
+  function wrapWords(node) {
+    if (node.nodeType === 3) {
+      const parts = node.textContent.match(/\S+|\s+/g);
+      if (!parts) return;
+      const frag = document.createDocumentFragment();
+      parts.forEach(p => {
+        if (/\s/.test(p)) { frag.appendChild(document.createTextNode(p)); return; }
+        const outer = document.createElement('span');
+        outer.style.cssText = 'display:inline-block;overflow:hidden;vertical-align:bottom;';
+        const inner = document.createElement('span');
+        inner.className = 'word-inner';
+        inner.style.cssText = 'display:inline-block;';
+        inner.textContent = p;
+        outer.appendChild(inner);
+        frag.appendChild(outer);
+      });
+      node.parentNode.replaceChild(frag, node);
+    } else if (node.nodeType === 1 && node.nodeName !== 'BR') {
+      Array.from(node.childNodes).forEach(wrapWords);
+    }
+  }
+  wrapWords(el);
+})();
+
+
+/* ══════════════════════════════════════════════════════════
+   UNIFIED SCROLL-JUMP SYSTEM
+   Every element tagged [data-jump] pops onto the screen
+   from below with a spring-like overshoot — visible, smooth,
+   premium. No hacker vibes. Uses GSAP elastic ease + stagger.
+
+   data-jump attributes:
+     data-jump              → basic jump-up (y: 80 → 0)
+     data-jump="left"       → from left (x: -60 → 0)
+     data-jump="scale"      → scale up (scale: 0.88 → 1)
+     data-jump="clip"       → clip-path curtain reveal
+     data-delay="0.1"       → extra stagger delay in seconds
+══════════════════════════════════════════════════════════ */
+(function() {
+  /* Tag every animatable element in the DOM */
+  const map = [
+    /* Section labels + counters */
+    { sel: '.sec-header-num',    attr: '',      stagger: 0 },
+    { sel: '.sec-header .h2',    attr: 'clip',  stagger: 0.05 },
+    { sel: '.sec-header .body-txt', attr: '',   stagger: 0.08 },
+
+    /* Arsenal cards — scale + jump */
+    { sel: '.pcard.feat',        attr: 'scale', stagger: 0 },
+    { sel: '.pcard.no-right',    attr: 'scale', stagger: 0.14 },
+
+    /* Manifesto */
+    { sel: '.manifesto-label-col', attr: 'left', stagger: 0 },
+    { sel: '#manifHeadline .word-inner', attr: '', stagger: 0.06 },
+    { sel: '.manifesto-body .body-txt',  attr: '', stagger: 0.1 },
+
+    /* Process items */
+    { sel: '.process-item',      attr: 'left',  stagger: 0.12 },
+
+    /* CTA band */
+    { sel: '.cta-headline',      attr: 'clip',  stagger: 0 },
+    { sel: '.cta-sub',           attr: '',      stagger: 0.08 },
+    { sel: '.cta-action',        attr: 'scale', stagger: 0.1 },
+
+    /* Footer columns */
+    { sel: '.foot-top > div',    attr: '',      stagger: 0.1 },
+  ];
+
+  /* Kick off after a tiny delay so DOM is fully painted */
+  map.forEach(({ sel, attr, stagger }) => {
+    const els = document.querySelectorAll(sel);
+    if (!els.length) return;
+
+    els.forEach((el, idx) => {
+      const extraDelay = parseFloat(el.dataset.delay || 0);
+      const delay = idx * stagger + extraDelay;
+
+      let fromVars, toVars;
+
+      if (attr === 'left') {
+        fromVars = { x: -70, opacity: 0 };
+        toVars   = { x: 0,   opacity: 1,
+          duration: 1.1, ease: 'power4.out' };
+      } else if (attr === 'scale') {
+        fromVars = { y: 60, scale: 0.88, opacity: 0 };
+        toVars   = { y: 0,  scale: 1,    opacity: 1,
+          duration: 1.15, ease: 'power4.out' };
+      } else if (attr === 'clip') {
+        /* Curtain: clip-path slides up to reveal */
+        fromVars = { clipPath: 'inset(100% 0% 0% 0%)', opacity: 1 };
+        toVars   = { clipPath: 'inset(0% 0% 0% 0%)',   opacity: 1,
+          duration: 1.05, ease: 'power4.out' };
+      } else {
+        /* Default: jump from below */
+        fromVars = { y: 80, opacity: 0 };
+        toVars   = { y: 0,  opacity: 1,
+          duration: 1.1, ease: 'power4.out' };
+      }
+
+      toVars.delay = delay;
+      toVars.scrollTrigger = {
+        trigger: el,
+        start: 'top 90%',
+        once: true,
+      };
+
+      gsap.fromTo(el, fromVars, toVars);
+    });
+  });
+})();
+
+</script>
 </body>
 </html>
